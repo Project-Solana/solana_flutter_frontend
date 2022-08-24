@@ -8,13 +8,16 @@ class Auth with ChangeNotifier {
   DateTime _expiryDate;
   String _userId;
 
-  Future<void> signup(String email, String password) async {
+  Future<void> signup(
+      String name, String mobile_no, String email, String password) async {
     final url = Uri.parse(
         'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyDdp3PEnQxjmiu-4dhHBfnky0GV4vmyU_g');
     final response = await http.post(
       url,
       body: json.encode(
         {
+          'name': name,
+          'mobile_no': mobile_no,
           'email': email,
           'password': password,
           'returnSecureToken': true,

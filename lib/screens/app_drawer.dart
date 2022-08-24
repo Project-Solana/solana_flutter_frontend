@@ -1,3 +1,4 @@
+import 'package:first_app/screens/my_profile/profile_page.dart';
 import 'package:first_app/widgets/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -36,7 +37,11 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.person),
             title: const Text(' My Profile '),
             onTap: () {
-              Navigator.pop(context);
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => ProfilePage(),
+                ),
+              );
             },
           ),
           ListTile(

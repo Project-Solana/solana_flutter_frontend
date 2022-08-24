@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        home: MainScreen(),
+        home: MainScreen(), //AuthScreen(),
         routes: {
           '/main-screen': (context) => MainScreen(),
         },
