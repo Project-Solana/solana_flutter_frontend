@@ -3,13 +3,13 @@ class User {
   final String name;
   final String mobile_no;
   final String email;
-  final String hashkey;
+  final String key;
 
-  User({
+  const User({
     this.imagePath,
     this.name,
     this.mobile_no,
     this.email,
-    this.hashkey,
+    this.key,
   });
 }

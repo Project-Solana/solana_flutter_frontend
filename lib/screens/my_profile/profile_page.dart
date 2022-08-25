@@ -1,9 +1,17 @@
 import 'package:flutter/material.dart';
 import './profile_widget.dart';
 import './user_preferences.dart';
+import './user.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({Key key}) : super(key: key);
+class ProfilePage extends StatefulWidget {
+  ProfilePage({Key key}) : super(key: key);
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
+  final user = UserPreferences.myUser;
 
   @override
   Widget build(BuildContext context) {
@@ -20,12 +28,48 @@ class ProfilePage extends StatelessWidget {
         children: [
           ProfileWidget(
             imagePath:
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/768px-Breezeicons-actions-22-im-user.svg.png?20160527143724', //user.imagePath,
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/768px-Breezeicons-actions-22-im-user.svg.png?20160527143724',
+            //user.imagePath,
+            isEdit: true,
             onClicked: () async {},
           ),
-          const SizedBox(height: 24),
+          const SizedBox(height: 30),
+          buildName(user),
         ],
       ),
     );
   }
+
+  Widget buildName(User user) => Column(
+        children: [
+          Text(
+            user.name,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 30,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            user.mobile_no,
+            style: TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            user.email,
+            style: TextStyle(
+              color: Colors.grey,
+            ),
+          ),
+          const SizedBox(height: 8),
+          Text(
+            user.key,
+            style: TextStyle(
+              fontSize: 25,
+            ),
+          ),
+        ],
+      );
 }
