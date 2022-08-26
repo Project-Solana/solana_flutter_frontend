@@ -1,6 +1,7 @@
 import 'package:first_app/screens/my_profile/profile_page.dart';
-import 'package:first_app/widgets/theme.dart';
+import './theme.dart';
 import 'package:flutter/material.dart';
+import './my_profile/edit_profile.dart';
 
 class AppDrawer extends StatelessWidget {
   const AppDrawer({Key key}) : super(key: key);
@@ -54,13 +55,6 @@ class AppDrawer extends StatelessWidget {
           ListTile(
             leading: const Icon(Icons.history),
             title: const Text(' History '),
-            onTap: () {
-              Navigator.pop(context);
-            },
-          ),
-          ListTile(
-            leading: const Icon(Icons.edit),
-            title: const Text(' Edit Profile '),
             onTap: () {
               Navigator.pop(context);
             },

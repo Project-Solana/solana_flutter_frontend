@@ -1,3 +1,4 @@
+import 'package:first_app/screens/my_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
 import './profile_widget.dart';
 import './user_preferences.dart';
@@ -12,6 +13,15 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final user = UserPreferences.myUser;
+  @override
+  void openSideBar(BuildContext ctx) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return EditProfilePage();
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -30,11 +40,36 @@ class _ProfilePageState extends State<ProfilePage> {
             imagePath:
                 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/768px-Breezeicons-actions-22-im-user.svg.png?20160527143724',
             //user.imagePath,
-            isEdit: true,
-            onClicked: () async {},
           ),
           const SizedBox(height: 30),
           buildName(user),
+          const SizedBox(height: 50),
+          Container(
+            margin: EdgeInsets.all(30),
+            child: RaisedButton(
+              onPressed: () => openSideBar(context),
+              // Navigator.of(context).push(
+              //   MaterialPageRoute(
+              //     builder: (context) => EditProfilePage(),
+              //   ),
+              // );
+
+              color: Colors.blue,
+              hoverColor: Color.fromARGB(255, 5, 90, 174),
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    'Edit Profile',
+                  ),
+                  Icon(Icons.edit),
+                ],
+              ),
+              textColor: Colors.white,
+            ),
+          ),
         ],
       ),
     );
