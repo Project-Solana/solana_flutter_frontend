@@ -21,6 +21,7 @@ final _darkTheme = ThemeData(
 
 class DarkLight extends StatefulWidget {
   const DarkLight({Key key}) : super(key: key);
+  static const routeName = '/theme-page';
 
   @override
   State<DarkLight> createState() => _DarkLightState();

@@ -1,3 +1,4 @@
+import 'package:first_app/screens/auth_screen.dart';
 import 'package:first_app/screens/my_profile/profile_page.dart';
 import './theme.dart';
 import 'package:flutter/material.dart';
@@ -38,6 +39,7 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.person),
             title: const Text(' My Profile '),
             onTap: () {
+              // Navigator.of(context).pushNamed(ProfilePage.routeName);
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => ProfilePage(),
@@ -63,6 +65,7 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.arrow_forward_ios),
             title: const Text(' Theme '),
             onTap: () {
+              //Navigator.of(context).pushNamed(AuthScreen.routeName);
               Navigator.of(context).push(
                 MaterialPageRoute(
                   builder: (context) => DarkLight(),
@@ -81,7 +84,12 @@ class AppDrawer extends StatelessWidget {
             leading: const Icon(Icons.logout),
             title: const Text('LogOut'),
             onTap: () {
-              Navigator.pop(context);
+              //Navigator.of(context).pushNamed(AuthScreen.routeName);
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => AuthScreen(),
+                ),
+              );
             },
           ),
         ],

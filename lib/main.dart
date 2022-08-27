@@ -1,3 +1,6 @@
+import './screens/theme.dart';
+
+import './screens/my_profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './screens/main_screen.dart';
@@ -19,6 +22,9 @@ class MyApp extends StatelessWidget {
         home: MainScreen(), //AuthScreen(),
         routes: {
           '/main-screen': (context) => MainScreen(),
+          ProfilePage.routeName: (context) => ProfilePage(),
+          AuthScreen.routeName: (context) => AuthScreen(),
+          DarkLight.routeName: (context) => DarkLight(),
         },
       ),
     );

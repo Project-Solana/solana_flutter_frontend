@@ -11,7 +11,7 @@ class Auth with ChangeNotifier {
   Future<void> signup(
       String name, String mobile_no, String email, String password) async {
     final url = Uri.parse(
-        'https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=AIzaSyDdp3PEnQxjmiu-4dhHBfnky0GV4vmyU_g');
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDdp3PEnQxjmiu-4dhHBfnky0GV4vmyU_g');
     final response = await http.post(
       url,
       body: json.encode(

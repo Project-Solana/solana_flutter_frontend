@@ -6,6 +6,7 @@ import './user.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({Key key}) : super(key: key);
+  static const routeName = '/profile-page';
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -14,7 +15,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   final user = UserPreferences.myUser;
   @override
-  void openSideBar(BuildContext ctx) {
+  void openBottomSheet(BuildContext ctx) {
     showModalBottomSheet(
       context: ctx,
       builder: (_) {
@@ -47,7 +48,7 @@ class _ProfilePageState extends State<ProfilePage> {
           Container(
             margin: EdgeInsets.all(30),
             child: RaisedButton(
-              onPressed: () => openSideBar(context),
+              onPressed: () => openBottomSheet(context),
               // Navigator.of(context).push(
               //   MaterialPageRoute(
               //     builder: (context) => EditProfilePage(),
