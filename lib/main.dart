@@ -1,13 +1,11 @@
-import 'package:first_app/payment.dart/payment_screen.dart';
-
+import '../screens/payment/payment_screen.dart';
 import './screens/theme.dart';
-
 import './screens/my_profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import './screens/main_screen.dart';
 import './screens/auth_screen.dart';
-import 'Providers/auth.dart';
+import './Providers/auth.dart';
 
 void main() => runApp(MyApp());
 

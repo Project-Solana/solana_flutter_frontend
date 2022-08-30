@@ -3,9 +3,20 @@ import 'package:flutter/material.dart';
 import './profile_widget.dart';
 import './user_preferences.dart';
 import './user.dart';
+import './edit_profile.dart';
 
 class ProfilePage extends StatefulWidget {
-  ProfilePage({Key key}) : super(key: key);
+  ProfilePage({
+    Key key,
+    @required this.name,
+    @required this.mobileNo,
+    @required this.email,
+  }) : super(key: key);
+
+  String name;
+  String mobileNo;
+  String email;
+
   static const routeName = '/profile-page';
 
   @override
@@ -14,6 +25,21 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final user = UserPreferences.myUser;
+  String name = UserPreferences.myUser.name;
+  String mobileNo = UserPreferences.myUser.mobile_no;
+  String email = UserPreferences.myUser.email;
+  final nameController = TextEditingController();
+  final mobileNoController = TextEditingController();
+  final emailController = TextEditingController();
+
+  void resetProfile() {
+    setState(() {
+      name = nameController.text;
+      mobileNo = mobileNoController.text;
+      email = emailController.text;
+    });
+  }
+
   @override
   void openBottomSheet(BuildContext ctx) {
     showModalBottomSheet(
@@ -77,9 +103,10 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   Widget buildName(User user) => Column(
-        children: [
+        children: <Widget>[
           Text(
-            user.name,
+            //user.name,
+            nameController.text,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 30,
@@ -87,14 +114,16 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           const SizedBox(height: 8),
           Text(
-            user.mobile_no,
+            //user.mobile_no,
+            mobileNoController.text,
             style: TextStyle(
               color: Colors.grey,
             ),
           ),
           const SizedBox(height: 8),
           Text(
-            user.email,
+            //user.email,
+            emailController.text,
             style: TextStyle(
               color: Colors.grey,
             ),

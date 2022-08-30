@@ -1,8 +1,9 @@
+import 'package:first_app/screens/my_profile/profile_page.dart';
 import 'package:first_app/screens/my_profile/profile_widget.dart';
 import 'package:flutter/material.dart';
 import './user_preferences.dart';
 import './user.dart';
-import './text_field_widget.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class EditProfilePage extends StatefulWidget {
   const EditProfilePage({Key key}) : super(key: key);
@@ -12,7 +13,12 @@ class EditProfilePage extends StatefulWidget {
 }
 
 class _EditProfilePageState extends State<EditProfilePage> {
-  final user = UserPreferences.myUser;
+  String name = UserPreferences.myUser.name;
+  String mobileNo = UserPreferences.myUser.mobile_no;
+  String email = UserPreferences.myUser.email;
+  final nameController = TextEditingController();
+  final mobileNoController = TextEditingController();
+  final emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -24,34 +30,79 @@ class _EditProfilePageState extends State<EditProfilePage> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: ListView(
-        padding: EdgeInsets.symmetric(horizontal: 32),
-        physics: BouncingScrollPhysics(),
-        children: [
-          ProfileWidget(
-            imagePath: user.imagePath,
-            isEdit: true,
-            onClicked: () async {},
-          ),
-          const SizedBox(
-            height: 24,
-          ),
-          TextFieldWidget(
-            label: 'Full Name',
-            text: user.name,
-            onChanged: (name) {},
-          ),
-          TextFieldWidget(
-            label: 'Mobile no.',
-            text: user.mobile_no,
-            onChanged: (name) {},
-          ),
-          TextFieldWidget(
-            label: 'Email',
-            text: user.email,
-            onChanged: (name) {},
-          ),
-        ],
+      body: Container(
+        child: ListView(
+          padding: EdgeInsets.symmetric(horizontal: 32),
+          physics: BouncingScrollPhysics(),
+          children: [
+            ProfileWidget(
+              imagePath: UserPreferences.myUser.imagePath,
+              isEdit: true,
+              onClicked: () async {},
+            ),
+            const SizedBox(
+              height: 24,
+            ),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Name',
+                labelStyle: GoogleFonts.quicksand(
+                  fontSize: 14,
+                ),
+              ),
+              onChanged: (val) {
+                val = nameController.text;
+                name = val;
+              },
+            ),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Mobile Number',
+                labelStyle: GoogleFonts.quicksand(
+                  fontSize: 14,
+                ),
+              ),
+              onChanged: (val) {
+                val = mobileNoController.text;
+                mobileNo = val;
+              },
+            ),
+            TextField(
+              decoration: InputDecoration(
+                labelText: 'Email',
+                labelStyle: GoogleFonts.quicksand(
+                  fontSize: 14,
+                ),
+              ),
+              onChanged: (val) {
+                val = emailController.text;
+                email = val;
+              },
+            ),
+            RaisedButton(
+              color: Colors.blue,
+              child: Text(
+                'Done',
+                style: TextStyle(
+                  fontSize: 10,
+                  fontWeight: FontWeight.bold,
+                  color: Colors.white,
+                ),
+              ),
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => ProfilePage(
+                      name: name,
+                      mobileNo: mobileNo,
+                      email: email,
+                    ),
+                  ),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

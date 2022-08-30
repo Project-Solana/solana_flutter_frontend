@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 import 'package:numberpicker/numberpicker.dart';
-import '../payment.dart/payment_screen.dart';
+import '../screens/payment/payment_screen.dart';
+import '../screens/bottom_sheet.dart';
 
 class ProviderAndSlot extends StatefulWidget {
   const ProviderAndSlot({Key key}) : super(key: key);
@@ -37,6 +38,16 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
         _selectedTime2 = result.format(context);
       });
     }
+  }
+
+  @override
+  void openBottomSheet(BuildContext ctx) {
+    showModalBottomSheet(
+      context: ctx,
+      builder: (_) {
+        return MyBottomSheet();
+      },
+    );
   }
 
   @override
@@ -92,7 +103,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                       Icon(Icons.search),
                     ],
                   ),
-                  onPressed: () {},
+                  onPressed: () => openBottomSheet(context),
                 ),
                 //Insert list displaying the names of the nearby providers
               ],
