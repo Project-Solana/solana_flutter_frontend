@@ -1,3 +1,4 @@
+import 'package:first_app/widgets/home_page_body.dart';
 import 'package:flutter/material.dart';
 import 'bottom_sheet.dart';
 import './app_drawer.dart';
@@ -29,26 +30,10 @@ class MainScreen extends StatelessWidget {
               decoration: InputDecoration(labelText: 'Search'),
             ),
           ),
-          // title: Center(
-          //   child: Text(
-          //     'ParkIt',
-          //     style: TextStyle(
-          //         fontSize: 30,
-          //         fontWeight: FontWeight.bold,
-          //         color: Color.fromARGB(255, 43, 1, 39)),
-          //   ),
-          // ),
           backgroundColor: Color.fromARGB(255, 61, 182, 230),
-          // actions: <Widget>[
-          //   // IconButton(
-          //   //   // alignment: Alignment.topLeft,
-          //   //   hoverColor: Color.fromARGB(255, 27, 102, 164),
-          //   //   onPressed: () {},
-          //   //   icon: Icon(Icons.toc),
-          //   // ),
-          // ],
         ),
         drawer: AppDrawer(),
+        body: SingleChildScrollView(child: HomePageBody()),
       ),
     );
   }

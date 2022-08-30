@@ -1,3 +1,5 @@
+import 'package:first_app/payment.dart/payment_screen.dart';
+
 import './screens/theme.dart';
 
 import './screens/my_profile/profile_page.dart';
@@ -24,6 +26,7 @@ class MyApp extends StatelessWidget {
           '/main-screen': (context) => MainScreen(),
           ProfilePage.routeName: (context) => ProfilePage(),
           AuthScreen.routeName: (context) => AuthScreen(),
+          PaymentScreen.routeName: (context) => PaymentScreen(),
           DarkLight.routeName: (context) => DarkLight(),
         },
       ),
