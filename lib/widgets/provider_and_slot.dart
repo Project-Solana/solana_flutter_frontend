@@ -15,7 +15,29 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
   DateTime _dateTime1;
   DateTime _dateTime2;
   int _totalSlots;
+  String _selectedTime1;
+  String _selectedTime2;
   final slotController = TextEditingController();
+
+  Future<void> _show1() async {
+    final TimeOfDay result =
+        await showTimePicker(context: context, initialTime: TimeOfDay.now());
+    if (result != null) {
+      setState(() {
+        _selectedTime1 = result.format(context);
+      });
+    }
+  }
+
+  Future<void> _show2() async {
+    final TimeOfDay result =
+        await showTimePicker(context: context, initialTime: TimeOfDay.now());
+    if (result != null) {
+      setState(() {
+        _selectedTime2 = result.format(context);
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -187,7 +209,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                           color: Color.fromARGB(255, 4, 76, 221),
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: _show1,
                     ),
                     Text(
                       _dateTime1 == null
@@ -198,7 +220,9 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                       ),
                     ),
                     Text(
-                      'No time chosen',
+                      _selectedTime1 != null
+                          ? _selectedTime1
+                          : 'No time selected!',
                       style: TextStyle(
                         fontSize: 10,
                       ),
@@ -245,7 +269,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                         color: Color.fromARGB(255, 4, 76, 221),
                       ),
                     ),
-                    onPressed: () {},
+                    onPressed: _show2,
                   ),
                   Text(
                     _dateTime2 == null
@@ -256,7 +280,9 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                     ),
                   ),
                   Text(
-                    'No time chosen',
+                    _selectedTime2 != null
+                        ? _selectedTime2
+                        : 'No time selected!',
                     style: TextStyle(
                       fontSize: 10,
                     ),
