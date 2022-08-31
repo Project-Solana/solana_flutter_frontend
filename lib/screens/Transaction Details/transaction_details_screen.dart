@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class TransactionDetails extends StatelessWidget {
-  const TransactionDetails({Key key}) : super(key: key);
+class TransactionDetailsScreen extends StatelessWidget {
+  const TransactionDetailsScreen({Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

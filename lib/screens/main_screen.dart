@@ -18,7 +18,7 @@ class _MainScreenState extends State<MainScreen> {
 
   final screens = [
     HomePageBody(),
-    TransactionDetails(),
+    TransactionDetailsScreen(),
     ProfilePage(),
   ];
 
@@ -33,7 +33,7 @@ class _MainScreenState extends State<MainScreen> {
         extendBody: true,
         bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.white,
-          color: Colors.blue,
+          color: Color.fromARGB(255, 61, 182, 230),
           key: _bottomNavigationKey,
           animationDuration: Duration(milliseconds: 300),
           items: <Widget>[

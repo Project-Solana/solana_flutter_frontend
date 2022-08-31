@@ -1,3 +1,5 @@
+import 'package:first_app/screens/Transaction%20Details/transaction_details_screen.dart';
+
 import '../screens/payment/payment_screen.dart';
 import './screens/theme.dart';
 import './screens/my_profile/profile_page.dart';

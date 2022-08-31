@@ -1,3 +1,4 @@
+import 'package:first_app/screens/Settings/settings_screen.dart';
 import 'package:first_app/screens/my_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
 import './profile_widget.dart';
@@ -40,15 +41,15 @@ class _ProfilePageState extends State<ProfilePage> {
     });
   }
 
-  @override
-  void openBottomSheet(BuildContext ctx) {
-    showModalBottomSheet(
-      context: ctx,
-      builder: (_) {
-        return EditProfilePage();
-      },
-    );
-  }
+  // @override
+  // void openBottomSheet(BuildContext ctx) {
+  //   showModalBottomSheet(
+  //     context: ctx,
+  //     builder: (_) {
+  //       return EditProfilePage();
+  //     },
+  //   );
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -68,16 +69,18 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(height: 30),
           buildName(user),
           const SizedBox(height: 50),
+
+          //Settings
           Container(
             margin: EdgeInsets.all(30),
             child: RaisedButton(
-              onPressed: () => openBottomSheet(context),
-              // Navigator.of(context).push(
-              //   MaterialPageRoute(
-              //     builder: (context) => EditProfilePage(),
-              //   ),
-              // );
-
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SettingsScreen(),
+                  ),
+                );
+              },
               color: Colors.blue,
               hoverColor: Color.fromARGB(255, 5, 90, 174),
               shape: RoundedRectangleBorder(
@@ -86,14 +89,42 @@ class _ProfilePageState extends State<ProfilePage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'Edit Profile',
+                    'Settings',
                   ),
-                  Icon(Icons.edit),
+                  Icon(Icons.settings),
                 ],
               ),
               textColor: Colors.white,
             ),
           ),
+
+          //
+          // Container(
+          //   margin: EdgeInsets.all(30),
+          //   child: RaisedButton(
+          //     onPressed: () => openBottomSheet(context),
+          //     // Navigator.of(context).push(
+          //     //   MaterialPageRoute(
+          //     //     builder: (context) => EditProfilePage(),
+          //     //   ),
+          //     // );
+
+          //     color: Colors.blue,
+          //     hoverColor: Color.fromARGB(255, 5, 90, 174),
+          //     shape: RoundedRectangleBorder(
+          //         borderRadius: BorderRadius.circular(10)),
+          //     child: Row(
+          //       mainAxisAlignment: MainAxisAlignment.center,
+          //       children: [
+          //         Text(
+          //           'Edit Profile',
+          //         ),
+          //         Icon(Icons.edit),
+          //       ],
+          //     ),
+          //     textColor: Colors.white,
+          //   ),
+          // ),
         ],
       ),
     );
@@ -102,8 +133,8 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget buildName(User user) => Column(
         children: <Widget>[
           Text(
-            //user.name,
-            nameController.text,
+            user.name,
+            //nameController.text,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 30,
@@ -111,16 +142,16 @@ class _ProfilePageState extends State<ProfilePage> {
           ),
           const SizedBox(height: 8),
           Text(
-            //user.mobile_no,
-            mobileNoController.text,
+            user.mobile_no,
+            //mobileNoController.text,
             style: TextStyle(
               color: Colors.grey,
             ),
           ),
           const SizedBox(height: 8),
           Text(
-            //user.email,
-            emailController.text,
+            user.email,
+            //emailController.text,
             style: TextStyle(
               color: Colors.grey,
             ),
