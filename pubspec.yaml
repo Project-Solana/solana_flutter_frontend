@@ -43,6 +43,7 @@ dependencies:
   shared_preferences: ^2.0.15
   google_fonts: ^3.0.1
   intl: ^0.17.0
+  curved_navigation_bar: ^1.0.3
 
 dev_dependencies:
   flutter_test:
