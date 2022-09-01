@@ -30,9 +30,9 @@ dependencies:
   switcher_button: ^0.0.4
   flutter:
     sdk: flutter
-  api_cache_manager: ^1.0.2
-  snippet_coder_utils: ^1.0.9
-  numberpicker: ^2.1.1
+  # api_cache_manager: ^1.0.2
+  # snippet_coder_utils: ^1.0.9
+  # numberpicker: ^2.1.1
 
 
   # The following adds the Cupertino Icons font to your application.

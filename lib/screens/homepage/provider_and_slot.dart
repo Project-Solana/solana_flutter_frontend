@@ -147,8 +147,11 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                               actions: [
                                 TextButton(
                                   onPressed: () {
-                                    _totalSlots =
-                                        int.parse(slotController.text);
+                                    setState(() {
+                                      _totalSlots =
+                                          int.parse(slotController.text);
+                                    });
+
                                     print(_totalSlots);
                                   },
                                   child: Text('Save'),
