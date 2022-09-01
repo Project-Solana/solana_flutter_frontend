@@ -1,18 +1,17 @@
-import '../screens/Transaction%20Details/transaction_details_screen.dart';
-import '../screens/my_profile/profile_page.dart';
-import 'package:first_app/widgets/home_page_body.dart';
+import '../Transaction%20Details/transaction_details_screen.dart';
+import '../my_profile/profile_page.dart';
+import './home_page_body.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-//import './app_drawer.dart';
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({Key key}) : super(key: key);
+class HomePage extends StatefulWidget {
+  const HomePage({Key key}) : super(key: key);
 
   @override
-  State<MainScreen> createState() => _MainScreenState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MainScreenState extends State<MainScreen> {
+class _HomePageState extends State<HomePage> {
   int _page = 0;
   GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
 
@@ -47,7 +46,8 @@ class _MainScreenState extends State<MainScreen> {
             });
           },
         ),
-        //drawer: AppDrawer(),
+
+        //Navigating to different screens through curved navigation barS
         body: screens[_page],
       ),
     );

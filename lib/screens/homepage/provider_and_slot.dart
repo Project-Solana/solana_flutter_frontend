@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
-import 'package:numberpicker/numberpicker.dart';
-import '../screens/payment/payment_screen.dart';
-import '../screens/bottom_sheet.dart';
+import '../payment/payment_screen.dart';
+import '../bottom_sheet.dart';
 
 class ProviderAndSlot extends StatefulWidget {
   const ProviderAndSlot({Key key}) : super(key: key);
@@ -15,7 +14,7 @@ class ProviderAndSlot extends StatefulWidget {
 class _ProviderAndSlotState extends State<ProviderAndSlot> {
   DateTime _dateTime1;
   DateTime _dateTime2;
-  int _totalSlots;
+  int _totalSlots = 0;
   String _selectedTime1;
   String _selectedTime2;
   final slotController = TextEditingController();
@@ -80,9 +79,6 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                   padding: const EdgeInsets.all(5.0),
                   child: TextField(
                     decoration: InputDecoration(
-                      // icon: Icon(
-                      //   Icons.search,
-                      // ),
                       labelText: 'Enter your current location',
                       labelStyle: GoogleFonts.quicksand(
                         fontSize: 14,
@@ -134,35 +130,32 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                           context: context,
                           builder: (context) {
                             return AlertDialog(
-                              // content: NumberPicker(
-                              //   minValue: 1,
-                              //   maxValue: 10,
-                              //   value: 1,
-                              //   onChanged: (value) {
-                              //     _totalSlots = value;
-                              //   },
-                              // ),
                               content: TextField(
+                                controller: slotController,
                                 keyboardType: TextInputType.number,
                                 decoration: InputDecoration(
                                   labelText: 'Enter no. of slots to be booked',
                                   labelStyle: GoogleFonts.quicksand(
-                                    fontSize: 10,
+                                    fontSize: 14,
                                   ),
                                 ),
-                                onChanged: (val) {
-                                  int val = int.parse(slotController.text);
-                                  _totalSlots = val;
-                                },
+                                // onChanged: (val) {
+                                //   int val = int.parse(slotController.text);
+                                //   _totalSlots = val;
+                                // },
                               ),
                               actions: [
                                 TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: Text('Cancel'),
+                                  onPressed: () {
+                                    _totalSlots =
+                                        int.parse(slotController.text);
+                                    print(_totalSlots);
+                                  },
+                                  child: Text('Save'),
                                 ),
                                 TextButton(
                                   onPressed: () => Navigator.pop(context),
-                                  child: Text('Okay'),
+                                  child: Text('Done'),
                                 ),
                               ],
                             );
@@ -170,7 +163,8 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                     },
                   ),
                   Text(
-                    _totalSlots == null ? 'Select no. of slots' : _totalSlots,
+                    _totalSlots.toString(),
+                    //!= null ? _totalSlots : 'Select no. of slots',
                     style: TextStyle(
                       fontSize: 10,
                     ),

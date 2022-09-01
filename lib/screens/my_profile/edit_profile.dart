@@ -2,7 +2,6 @@ import 'package:first_app/screens/my_profile/profile_page.dart';
 import 'package:first_app/screens/my_profile/profile_widget.dart';
 import 'package:flutter/material.dart';
 import './user_preferences.dart';
-import './user.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class EditProfilePage extends StatefulWidget {
@@ -19,6 +18,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
   final nameController = TextEditingController();
   final mobileNoController = TextEditingController();
   final emailController = TextEditingController();
+
+  void resetProfile() {
+    setState(() {
+      name = nameController.text;
+      mobileNo = mobileNoController.text;
+      email = emailController.text;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -44,6 +51,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               height: 24,
             ),
             TextField(
+              controller: nameController,
               decoration: InputDecoration(
                 labelText: 'Name',
                 labelStyle: GoogleFonts.quicksand(
@@ -56,6 +64,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               },
             ),
             TextField(
+              controller: mobileNoController,
               decoration: InputDecoration(
                 labelText: 'Mobile Number',
                 labelStyle: GoogleFonts.quicksand(
@@ -68,6 +77,7 @@ class _EditProfilePageState extends State<EditProfilePage> {
               },
             ),
             TextField(
+              controller: emailController,
               decoration: InputDecoration(
                 labelText: 'Email',
                 labelStyle: GoogleFonts.quicksand(

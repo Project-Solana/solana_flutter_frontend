@@ -1,4 +1,4 @@
-import 'package:first_app/widgets/provider_and_slot.dart';
+import './provider_and_slot.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -41,10 +41,6 @@ class HomePageBody extends StatelessWidget {
                       color: Color.fromARGB(255, 58, 58, 58),
                       fontSize: 20,
                     ),
-                    // TextStyle(
-                    //   fontSize: 15,
-                    //   color: Color.fromARGB(255, 54, 54, 54),
-                    // ),
                   ),
                 ),
               ],

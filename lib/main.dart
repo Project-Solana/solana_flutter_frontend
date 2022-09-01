@@ -1,13 +1,12 @@
-import 'package:first_app/screens/Transaction%20Details/transaction_details_screen.dart';
-
-import '../screens/payment/payment_screen.dart';
+import './screens/Transaction Details/transaction_details_screen.dart';
+import './screens/payment/payment_screen.dart';
 import './screens/theme.dart';
 import './screens/my_profile/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import './screens/main_screen.dart';
-import './screens/auth_screen.dart';
-import './Providers/auth.dart';
+import './screens/homepage/home_page.dart';
+import 'authentication/auth_screen.dart';
+import 'authentication/auth.dart';
 
 void main() => runApp(MyApp());
 
@@ -21,9 +20,9 @@ class MyApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        home: MainScreen(), //AuthScreen(),
+        home: HomePage(), //AuthScreen(),
         routes: {
-          '/main-screen': (context) => MainScreen(),
+          '/home-page': (context) => HomePage(),
           ProfilePage.routeName: (context) => ProfilePage(),
           AuthScreen.routeName: (context) => AuthScreen(),
           PaymentScreen.routeName: (context) => PaymentScreen(),

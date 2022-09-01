@@ -12,7 +12,6 @@ class MyBottomSheet extends StatelessWidget {
         child: Column(
           children: <Widget>[
             AppBar(
-              //automaticallyImplyLeading: true,
               leading: BackButton(
                 color: Colors.black,
               ),

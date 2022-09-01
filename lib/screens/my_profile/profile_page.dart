@@ -1,10 +1,8 @@
 import 'package:first_app/screens/Settings/settings_screen.dart';
-import 'package:first_app/screens/my_profile/edit_profile.dart';
 import 'package:flutter/material.dart';
 import './profile_widget.dart';
 import './user_preferences.dart';
 import './user.dart';
-import './edit_profile.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({
@@ -26,30 +24,6 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   final user = UserPreferences.myUser;
-  String name = UserPreferences.myUser.name;
-  String mobileNo = UserPreferences.myUser.mobile_no;
-  String email = UserPreferences.myUser.email;
-  final nameController = TextEditingController();
-  final mobileNoController = TextEditingController();
-  final emailController = TextEditingController();
-
-  void resetProfile() {
-    setState(() {
-      name = nameController.text;
-      mobileNo = mobileNoController.text;
-      email = emailController.text;
-    });
-  }
-
-  // @override
-  // void openBottomSheet(BuildContext ctx) {
-  //   showModalBottomSheet(
-  //     context: ctx,
-  //     builder: (_) {
-  //       return EditProfilePage();
-  //     },
-  //   );
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -97,34 +71,6 @@ class _ProfilePageState extends State<ProfilePage> {
               textColor: Colors.white,
             ),
           ),
-
-          //
-          // Container(
-          //   margin: EdgeInsets.all(30),
-          //   child: RaisedButton(
-          //     onPressed: () => openBottomSheet(context),
-          //     // Navigator.of(context).push(
-          //     //   MaterialPageRoute(
-          //     //     builder: (context) => EditProfilePage(),
-          //     //   ),
-          //     // );
-
-          //     color: Colors.blue,
-          //     hoverColor: Color.fromARGB(255, 5, 90, 174),
-          //     shape: RoundedRectangleBorder(
-          //         borderRadius: BorderRadius.circular(10)),
-          //     child: Row(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       children: [
-          //         Text(
-          //           'Edit Profile',
-          //         ),
-          //         Icon(Icons.edit),
-          //       ],
-          //     ),
-          //     textColor: Colors.white,
-          //   ),
-          // ),
         ],
       ),
     );
@@ -134,7 +80,6 @@ class _ProfilePageState extends State<ProfilePage> {
         children: <Widget>[
           Text(
             user.name,
-            //nameController.text,
             style: TextStyle(
               fontWeight: FontWeight.bold,
               fontSize: 30,
@@ -143,7 +88,6 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(height: 8),
           Text(
             user.mobile_no,
-            //mobileNoController.text,
             style: TextStyle(
               color: Colors.grey,
             ),
@@ -151,7 +95,6 @@ class _ProfilePageState extends State<ProfilePage> {
           const SizedBox(height: 8),
           Text(
             user.email,
-            //emailController.text,
             style: TextStyle(
               color: Colors.grey,
             ),
