@@ -84,13 +84,16 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                   ),
                 ),
                 ElevatedButton(
+                  style: ButtonStyle(
+                      backgroundColor:
+                          MaterialStateProperty.all(Colors.redAccent.shade400)),
                   child: Row(
                     children: [
                       Text(
                         'Find Details',
                         style: TextStyle(
                           fontSize: 10,
-                          color: Color.fromARGB(255, 243, 8, 8),
+                          color: Color.fromARGB(255, 255, 255, 255),
                         ),
                       ),
                       Icon(Icons.search),
