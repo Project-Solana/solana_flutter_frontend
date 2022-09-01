@@ -25,14 +25,14 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Color.fromARGB(255, 61, 182, 230),
+          backgroundColor: Colors.redAccent.shade400,
         ),
 
         //Curved Navigation Bar
         extendBody: true,
         bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.white,
-          color: Color.fromARGB(255, 61, 182, 230),
+          color: Colors.redAccent.shade400,
           key: _bottomNavigationKey,
           animationDuration: Duration(milliseconds: 300),
           items: <Widget>[
