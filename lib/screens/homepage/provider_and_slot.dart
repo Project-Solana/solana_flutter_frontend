@@ -19,32 +19,29 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
   String _selectedTime2;
   final slotController = TextEditingController();
 
-  Future<void> _show1() async {
+  Future<void> _show1(int nn) async {
     final TimeOfDay result =
         await showTimePicker(context: context, initialTime: TimeOfDay.now());
-    if (result != null) {
+    if (nn == 1) {
       setState(() {
         _selectedTime1 = result.format(context);
       });
-    }
-  }
-
-  Future<void> _show2() async {
-    final TimeOfDay result =
-        await showTimePicker(context: context, initialTime: TimeOfDay.now());
-    if (result != null) {
+    } else if (nn == 2) {
       setState(() {
         _selectedTime2 = result.format(context);
       });
     }
   }
 
-  @override
   void openBottomSheet(BuildContext ctx) {
     showModalBottomSheet(
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
       context: ctx,
-      builder: (_) {
-        return MyBottomSheet();
+      builder: (ctx) {
+        return const MyBottomSheet();
       },
     );
   }
@@ -69,7 +66,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
             margin: EdgeInsets.fromLTRB(5, 10, 10, 30),
             decoration: BoxDecoration(
               border: Border.all(
-                color: Color.fromARGB(255, 0, 41, 188),
+                color: Color.fromARGB(255, 61, 62, 66),
               ),
               borderRadius: BorderRadius.circular(5),
             ),
@@ -86,14 +83,14 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                     ),
                   ),
                 ),
-                RaisedButton(
+                ElevatedButton(
                   child: Row(
                     children: [
                       Text(
                         'Find Details',
                         style: TextStyle(
                           fontSize: 10,
-                          color: Color.fromARGB(255, 66, 66, 66),
+                          color: Color.fromARGB(255, 243, 8, 8),
                         ),
                       ),
                       Icon(Icons.search),
@@ -107,16 +104,18 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
           ),
           const SizedBox(
             height: 12,
-          ),
-          Text('Selected Provider'),
-          const SizedBox(
-            height: 8,
+            width: 650,
           ),
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Column(
                 children: [
-                  FlatButton(
+                  Text('Selected Provider'),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  TextButton(
                     child: Text(
                       'Choose no. of slots',
                       style: TextStyle(
@@ -186,7 +185,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                         fontSize: 10,
                       ),
                     ),
-                    FlatButton(
+                    TextButton(
                       child: Text(
                         'Pick Date',
                         style: TextStyle(
@@ -208,7 +207,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                         });
                       },
                     ),
-                    FlatButton(
+                    TextButton(
                       child: Text(
                         'Pick Time',
                         style: TextStyle(
@@ -217,11 +216,13 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                           color: Color.fromARGB(255, 4, 76, 221),
                         ),
                       ),
-                      onPressed: _show1,
+                      onPressed: () {
+                        _show1(1);
+                      },
                     ),
                     Text(
                       _dateTime1 == null
-                          ? 'No date chosen'
+                          ? 'No date chossen'
                           : '${DateFormat.yMMMd().format(_dateTime1)}',
                       style: TextStyle(
                         fontSize: 10,
@@ -246,7 +247,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                       fontSize: 10,
                     ),
                   ),
-                  FlatButton(
+                  TextButton(
                     child: Text(
                       'Pick Date',
                       style: TextStyle(
@@ -268,7 +269,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                       });
                     },
                   ),
-                  FlatButton(
+                  TextButton(
                     child: Text(
                       'Pick Time',
                       style: TextStyle(
@@ -277,7 +278,9 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                         color: Color.fromARGB(255, 4, 76, 221),
                       ),
                     ),
-                    onPressed: _show2,
+                    onPressed: () {
+                      _show1(2);
+                    },
                   ),
                   Text(
                     _dateTime2 == null
@@ -300,12 +303,11 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
             ],
           ),
           const SizedBox(
-            height: 35,
+            height: 30,
           ),
           Container(
-            alignment: Alignment.topRight,
-            child: RaisedButton(
-              color: Color.fromARGB(255, 4, 76, 221),
+            alignment: Alignment.bottomCenter,
+            child: ElevatedButton(
               child: Text(
                 'Confirm',
                 style: TextStyle(
