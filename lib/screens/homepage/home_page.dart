@@ -1,3 +1,5 @@
+import 'package:google_fonts/google_fonts.dart';
+
 import '../Transaction%20Details/transaction_details_screen.dart';
 import '../my_profile/profile_page.dart';
 import './home_page_body.dart';
@@ -25,14 +27,22 @@ class _HomePageState extends State<HomePage> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          backgroundColor: Colors.redAccent.shade400,
+          backgroundColor: Color.fromARGB(255, 52, 58, 64),
+          title: Text(
+            'PARK IT',
+            style: GoogleFonts.ubuntu(
+              fontSize: 25,
+            ),
+          ),
+          shadowColor: Color.fromARGB(255, 73, 80, 87),
+          centerTitle: true,
         ),
 
         //Curved Navigation Bar
         extendBody: true,
         bottomNavigationBar: CurvedNavigationBar(
           backgroundColor: Colors.white,
-          color: Colors.redAccent.shade400,
+          color: Color.fromARGB(255, 52, 58, 64),
           key: _bottomNavigationKey,
           animationDuration: Duration(milliseconds: 300),
           items: <Widget>[

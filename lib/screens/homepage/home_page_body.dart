@@ -12,20 +12,8 @@ class HomePageBody extends StatelessWidget {
         padding: EdgeInsets.all(15),
         child: Column(
           children: <Widget>[
-            Container(
-              padding: EdgeInsets.only(
-                bottom: 10,
-              ),
-              child: Text(
-                'A FREE ONLINE BOOKING SYSTEM FOR PARKING LOTS',
-                style: TextStyle(
-                  fontWeight: FontWeight.bold,
-                  fontSize: 20,
-                  color: Color.fromARGB(255, 2, 53, 171),
-                ),
-              ),
-            ),
             Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset(
                   'assets/car_parking.jpg',

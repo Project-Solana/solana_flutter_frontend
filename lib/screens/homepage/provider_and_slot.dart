@@ -50,7 +50,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
   Widget build(BuildContext context) {
     return Container(
       margin: EdgeInsets.only(
-        top: 25,
+        top: 15,
       ),
       alignment: Alignment.topLeft,
       child: Column(
@@ -63,10 +63,10 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
             ),
           ),
           Container(
-            margin: EdgeInsets.fromLTRB(5, 10, 10, 30),
+            margin: EdgeInsets.fromLTRB(5, 10, 10, 10),
             decoration: BoxDecoration(
               border: Border.all(
-                color: Color.fromARGB(255, 61, 62, 66),
+                color: Color.fromARGB(255, 73, 80, 87),
               ),
               borderRadius: BorderRadius.circular(5),
             ),
@@ -75,56 +75,61 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: TextField(
+                    style: TextStyle(
+                        decorationColor: Color.fromARGB(255, 73, 80, 87)),
+                    cursorColor: Color.fromARGB(255, 73, 80, 87),
                     decoration: InputDecoration(
+                      border: InputBorder.none,
                       labelText: 'Enter your current location',
                       labelStyle: GoogleFonts.quicksand(
+                        color: Color.fromARGB(255, 73, 80, 87),
                         fontSize: 14,
                       ),
                     ),
                   ),
                 ),
-                ElevatedButton(
-                  style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(Colors.redAccent.shade400)),
-                  child: Row(
-                    children: [
-                      Text(
-                        'Find Details',
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: Color.fromARGB(255, 255, 255, 255),
+                Container(
+                  height: 30,
+                  width: 119,
+                  alignment: Alignment.center,
+                  child: ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: MaterialStateProperty.all(
+                            Color.fromARGB(255, 33, 37, 41))),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Find Details',
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Color.fromARGB(255, 255, 255, 255),
+                          ),
                         ),
-                      ),
-                      Icon(Icons.search),
-                    ],
+                        Icon(Icons.search),
+                      ],
+                    ),
+                    onPressed: () => openBottomSheet(context),
                   ),
-                  onPressed: () => openBottomSheet(context),
                 ),
                 //Insert list displaying the names of the nearby providers
               ],
             ),
           ),
-          const SizedBox(
-            height: 12,
-            width: 650,
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Column(
                 children: [
                   Text('Selected Provider'),
-                  const SizedBox(
-                    height: 5,
-                  ),
                   TextButton(
                     child: Text(
                       'Choose no. of slots',
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 4, 76, 221),
+                        color: Color.fromARGB(255, 108, 117, 125),
                       ),
                     ),
                     onPressed: () {
@@ -178,7 +183,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
               ),
               Padding(
                 padding: const EdgeInsets.only(
-                  right: 20,
+                  right: 10,
                 ),
                 child: Column(
                   children: [
@@ -194,7 +199,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 4, 76, 221),
+                          color: Color.fromARGB(255, 108, 117, 125),
                         ),
                       ),
                       onPressed: () {
@@ -216,7 +221,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                         style: TextStyle(
                           fontSize: 10,
                           fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 4, 76, 221),
+                          color: Color.fromARGB(255, 108, 117, 125),
                         ),
                       ),
                       onPressed: () {
@@ -256,7 +261,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 4, 76, 221),
+                        color: Color.fromARGB(255, 108, 117, 125),
                       ),
                     ),
                     onPressed: () {
@@ -278,7 +283,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                       style: TextStyle(
                         fontSize: 10,
                         fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 4, 76, 221),
+                        color: Color.fromARGB(255, 108, 117, 125),
                       ),
                     ),
                     onPressed: () {
@@ -305,12 +310,16 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
               ),
             ],
           ),
-          const SizedBox(
-            height: 30,
+          SizedBox(
+            height: 10,
           ),
           Container(
-            alignment: Alignment.bottomCenter,
+            alignment: Alignment.center,
             child: ElevatedButton(
+              style: ButtonStyle(
+                backgroundColor:
+                    MaterialStateProperty.all(Color.fromARGB(255, 33, 37, 41)),
+              ),
               child: Text(
                 'Confirm',
                 style: TextStyle(
