@@ -1,18 +1,35 @@
+import 'package:first_app/screens/Transaction%20Details/transactionList.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'transaction.dart';
 
 class TransactionDetailsScreen extends StatelessWidget {
-  const TransactionDetailsScreen({Key key}) : super(key: key);
+  final List<Transaction> trans = [
+    Transaction(
+      id: 1001,
+      entrydate: '15th sep 2022',
+      entrytime: '2:30 pm',
+      exitdate: '20th sep 2022',
+      exittime: '3:30 pm',
+    ),
+    Transaction(
+      id: 1002,
+      entrydate: '1st oct 2022',
+      entrytime: '4:30 pm',
+      exitdate: '3rd oct 2022',
+      exittime: '1:30 pm',
+    ),
+  ];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(
-          'Transaction Details',
-          style: TextStyle(
-            color: Colors.black,
+        title: Center(
+          child: Text(
+            'Transaction Details',
+            style: TextStyle(
+              color: Colors.black,
+            ),
           ),
         ),
         // leading: BackButton(
@@ -21,6 +38,7 @@ class TransactionDetailsScreen extends StatelessWidget {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
+      body: TransactionList(trans),
     );
   }
 }
