@@ -3,6 +3,7 @@ import '../my_profile/edit_profile.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key key}) : super(key: key);
+  static const routebase = '/settings';
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
@@ -16,6 +17,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
       builder: (_) {
         return EditProfilePage();
       },
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      isScrollControlled: true,
     );
   }
 
@@ -30,12 +35,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
           ),
         ),
         leading: BackButton(
+          onPressed: () {
+            Navigator.of(context).pop();
+          },
           color: Colors.black,
         ),
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: Container(
+        alignment: Alignment.topCenter,
         margin: EdgeInsets.all(30),
         child: RaisedButton(
           onPressed: () => openBottomSheet(context),

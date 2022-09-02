@@ -7,6 +7,7 @@ import 'package:provider/provider.dart';
 import './screens/homepage/home_page.dart';
 import 'authentication/auth_screen.dart';
 import 'authentication/auth.dart';
+import 'screens/Settings/settings_screen.dart';
 
 void main() => runApp(MyApp());
 
@@ -22,7 +23,8 @@ class MyApp extends StatelessWidget {
       child: MaterialApp(
         home: HomePage(), //AuthScreen(),
         routes: {
-          '/home-page': (context) => HomePage(),
+          HomePage.routema: (context) => HomePage(),
+          SettingsScreen.routebase: (ctx) => SettingsScreen(),
           ProfilePage.routeName: (context) => ProfilePage(),
           AuthScreen.routeName: (context) => AuthScreen(),
           PaymentScreen.routeName: (context) => PaymentScreen(),

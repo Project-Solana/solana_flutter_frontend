@@ -8,7 +8,7 @@ import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
-
+  static const routema = '/ome';
   @override
   State<HomePage> createState() => _HomePageState();
 }

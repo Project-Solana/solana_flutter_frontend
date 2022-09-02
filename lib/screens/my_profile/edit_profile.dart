@@ -29,90 +29,75 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        leading: BackButton(
-          color: Colors.black,
-        ),
-        backgroundColor: Colors.transparent,
-        elevation: 0,
-      ),
-      body: Container(
-        child: ListView(
-          padding: EdgeInsets.symmetric(horizontal: 32),
-          physics: BouncingScrollPhysics(),
-          children: [
-            ProfileWidget(
-              imagePath: UserPreferences.myUser.imagePath,
-              isEdit: true,
-              onClicked: () async {},
-            ),
-            const SizedBox(
-              height: 24,
-            ),
-            TextField(
-              controller: nameController,
-              decoration: InputDecoration(
-                labelText: 'Name',
-                labelStyle: GoogleFonts.quicksand(
-                  fontSize: 14,
-                ),
+    return Container(
+      height: 450,
+      child: ListView(
+        shrinkWrap: true,
+        padding: EdgeInsets.symmetric(horizontal: 32),
+        physics: BouncingScrollPhysics(),
+        children: [
+          ProfileWidget(
+            imagePath: UserPreferences.myUser.imagePath,
+            isEdit: true,
+            onClicked: () async {},
+          ),
+          const SizedBox(
+            height: 24,
+          ),
+          TextField(
+            controller: nameController,
+            decoration: InputDecoration(
+              labelText: 'Name',
+              labelStyle: GoogleFonts.quicksand(
+                fontSize: 14,
               ),
-              onChanged: (val) {
-                val = nameController.text;
-                name = val;
-              },
             ),
-            TextField(
-              controller: mobileNoController,
-              decoration: InputDecoration(
-                labelText: 'Mobile Number',
-                labelStyle: GoogleFonts.quicksand(
-                  fontSize: 14,
-                ),
+            onChanged: (val) {
+              val = nameController.text;
+              name = val;
+            },
+          ),
+          TextField(
+            controller: mobileNoController,
+            decoration: InputDecoration(
+              labelText: 'Mobile Number',
+              labelStyle: GoogleFonts.quicksand(
+                fontSize: 14,
               ),
-              onChanged: (val) {
-                val = mobileNoController.text;
-                mobileNo = val;
-              },
             ),
-            TextField(
-              controller: emailController,
-              decoration: InputDecoration(
-                labelText: 'Email',
-                labelStyle: GoogleFonts.quicksand(
-                  fontSize: 14,
-                ),
+            onChanged: (val) {
+              val = mobileNoController.text;
+              mobileNo = val;
+            },
+          ),
+          TextField(
+            controller: emailController,
+            decoration: InputDecoration(
+              labelText: 'Email',
+              labelStyle: GoogleFonts.quicksand(
+                fontSize: 14,
               ),
-              onChanged: (val) {
-                val = emailController.text;
-                email = val;
-              },
             ),
-            RaisedButton(
-              color: Colors.blue,
-              child: Text(
-                'Done',
-                style: TextStyle(
-                  fontSize: 10,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
+            onChanged: (val) {
+              val = emailController.text;
+              email = val;
+            },
+          ),
+          RaisedButton(
+            color: Colors.blue,
+            child: Text(
+              'Done',
+              style: TextStyle(
+                fontSize: 10,
+                fontWeight: FontWeight.bold,
+                color: Colors.white,
               ),
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => ProfilePage(
-                      name: name,
-                      mobileNo: mobileNo,
-                      email: email,
-                    ),
-                  ),
-                );
-              },
             ),
-          ],
-        ),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+        ],
       ),
     );
   }

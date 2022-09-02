@@ -29,7 +29,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color.fromARGB(0, 0, 0, 0),
         elevation: 0,
       ),
       body: ListView(
@@ -76,6 +76,7 @@ class _ProfilePageState extends State<ProfilePage> {
     );
   }
 
+  @override
   Widget buildName(User user) => Column(
         children: <Widget>[
           Text(

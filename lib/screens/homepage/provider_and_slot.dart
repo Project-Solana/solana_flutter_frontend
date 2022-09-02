@@ -18,6 +18,11 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
   String _selectedTime1;
   String _selectedTime2;
   final slotController = TextEditingController();
+  bool login;
+  _ProviderAndSlo(bool lol) {
+    login = lol;
+    setState(() {});
+  }
 
   Future<void> _show1(int nn) async {
     final TimeOfDay result =
@@ -75,6 +80,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                 Padding(
                   padding: const EdgeInsets.all(5.0),
                   child: TextField(
+                    enabled: login,
                     style: TextStyle(
                         decorationColor: Color.fromARGB(255, 73, 80, 87)),
                     cursorColor: Color.fromARGB(255, 73, 80, 87),
