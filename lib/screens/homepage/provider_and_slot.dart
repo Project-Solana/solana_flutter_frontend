@@ -118,199 +118,212 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                     onPressed: () => openBottomSheet(context),
                   ),
                 ),
+
                 //Insert list displaying the names of the nearby providers
               ],
             ),
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.start,
+          const SizedBox(
+            height: 10,
+          ),
+          Column(
             children: [
-              Column(
+              Text('Name of Selected Provider'),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text('Selected Provider'),
-                  TextButton(
-                    child: Text(
-                      'Choose no. of slots',
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 108, 117, 125),
-                      ),
-                    ),
-                    onPressed: () {
-                      showDialog(
-                          context: context,
-                          builder: (context) {
-                            return AlertDialog(
-                              content: TextField(
-                                controller: slotController,
-                                keyboardType: TextInputType.number,
-                                decoration: InputDecoration(
-                                  labelText: 'Enter no. of slots to be booked',
-                                  labelStyle: GoogleFonts.quicksand(
-                                    fontSize: 14,
+                  Column(
+                    children: [
+                      //Text('Selected Provider'),
+                      TextButton(
+                        child: Text(
+                          'Choose no. of slots',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 108, 117, 125),
+                          ),
+                        ),
+                        onPressed: () {
+                          showDialog(
+                              context: context,
+                              builder: (context) {
+                                return AlertDialog(
+                                  content: TextField(
+                                    controller: slotController,
+                                    keyboardType: TextInputType.number,
+                                    decoration: InputDecoration(
+                                      labelText:
+                                          'Enter no. of slots to be booked',
+                                      labelStyle: GoogleFonts.quicksand(
+                                        fontSize: 14,
+                                      ),
+                                    ),
+                                    // onChanged: (val) {
+                                    //   int val = int.parse(slotController.text);
+                                    //   _totalSlots = val;
+                                    // },
                                   ),
-                                ),
-                                // onChanged: (val) {
-                                //   int val = int.parse(slotController.text);
-                                //   _totalSlots = val;
-                                // },
-                              ),
-                              actions: [
-                                TextButton(
-                                  onPressed: () {
-                                    setState(() {
-                                      _totalSlots =
-                                          int.parse(slotController.text);
-                                    });
+                                  actions: [
+                                    TextButton(
+                                      onPressed: () {
+                                        setState(() {
+                                          _totalSlots =
+                                              int.parse(slotController.text);
+                                        });
 
-                                    print(_totalSlots);
-                                  },
-                                  child: Text('Save'),
-                                ),
-                                TextButton(
-                                  onPressed: () => Navigator.pop(context),
-                                  child: Text('Done'),
-                                ),
-                              ],
-                            );
-                          });
-                    },
-                  ),
-                  Text(
-                    _totalSlots.toString(),
-                    //!= null ? _totalSlots : 'Select no. of slots',
-                    style: TextStyle(
-                      fontSize: 10,
-                    ),
-                  ),
-                ],
-              ),
-              Padding(
-                padding: const EdgeInsets.only(
-                  right: 10,
-                ),
-                child: Column(
-                  children: [
-                    Text(
-                      'Entry',
-                      style: GoogleFonts.ubuntu(
-                        fontSize: 10,
+                                        print(_totalSlots);
+                                      },
+                                      child: Text('Save'),
+                                    ),
+                                    TextButton(
+                                      onPressed: () => Navigator.pop(context),
+                                      child: Text('Done'),
+                                    ),
+                                  ],
+                                );
+                              });
+                        },
                       ),
-                    ),
-                    TextButton(
-                      child: Text(
-                        'Pick Date',
+                      Text(
+                        _totalSlots.toString(),
+                        //!= null ? _totalSlots : 'Select no. of slots',
                         style: TextStyle(
                           fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 108, 117, 125),
                         ),
                       ),
-                      onPressed: () {
-                        showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime.now(),
-                          lastDate: DateTime(2025),
-                        ).then((date1) {
-                          setState(() {
-                            _dateTime1 = date1;
-                          });
-                        });
-                      },
+                    ],
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(
+                      right: 10,
                     ),
-                    TextButton(
-                      child: Text(
-                        'Pick Time',
+                    child: Column(
+                      children: [
+                        Text(
+                          'Entry',
+                          style: GoogleFonts.ubuntu(
+                            fontSize: 10,
+                          ),
+                        ),
+                        TextButton(
+                          child: Text(
+                            'Pick Date',
+                            style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 108, 117, 125),
+                            ),
+                          ),
+                          onPressed: () {
+                            showDatePicker(
+                              context: context,
+                              initialDate: DateTime.now(),
+                              firstDate: DateTime.now(),
+                              lastDate: DateTime(2025),
+                            ).then((date1) {
+                              setState(() {
+                                _dateTime1 = date1;
+                              });
+                            });
+                          },
+                        ),
+                        TextButton(
+                          child: Text(
+                            'Pick Time',
+                            style: TextStyle(
+                              fontSize: 10,
+                              fontWeight: FontWeight.bold,
+                              color: Color.fromARGB(255, 108, 117, 125),
+                            ),
+                          ),
+                          onPressed: () {
+                            _show1(1);
+                          },
+                        ),
+                        Text(
+                          _dateTime1 == null
+                              ? 'No date chossen'
+                              : '${DateFormat.yMMMd().format(_dateTime1)}',
+                          style: TextStyle(
+                            fontSize: 10,
+                          ),
+                        ),
+                        Text(
+                          _selectedTime1 != null
+                              ? _selectedTime1
+                              : 'No time selected!',
+                          style: TextStyle(
+                            fontSize: 10,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  Column(
+                    children: [
+                      Text(
+                        'Exit',
+                        style: GoogleFonts.ubuntu(
+                          fontSize: 10,
+                        ),
+                      ),
+                      TextButton(
+                        child: Text(
+                          'Pick Date',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 108, 117, 125),
+                          ),
+                        ),
+                        onPressed: () {
+                          showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime.now(),
+                            lastDate: DateTime(2025),
+                          ).then((date2) {
+                            setState(() {
+                              _dateTime2 = date2;
+                            });
+                          });
+                        },
+                      ),
+                      TextButton(
+                        child: Text(
+                          'Pick Time',
+                          style: TextStyle(
+                            fontSize: 10,
+                            fontWeight: FontWeight.bold,
+                            color: Color.fromARGB(255, 108, 117, 125),
+                          ),
+                        ),
+                        onPressed: () {
+                          _show1(2);
+                        },
+                      ),
+                      Text(
+                        _dateTime2 == null
+                            ? 'No date chosen'
+                            : '${DateFormat.yMMMd().format(_dateTime2)}',
                         style: TextStyle(
                           fontSize: 10,
-                          fontWeight: FontWeight.bold,
-                          color: Color.fromARGB(255, 108, 117, 125),
                         ),
                       ),
-                      onPressed: () {
-                        _show1(1);
-                      },
-                    ),
-                    Text(
-                      _dateTime1 == null
-                          ? 'No date chossen'
-                          : '${DateFormat.yMMMd().format(_dateTime1)}',
-                      style: TextStyle(
-                        fontSize: 10,
+                      Text(
+                        _selectedTime2 != null
+                            ? _selectedTime2
+                            : 'No time selected!',
+                        style: TextStyle(
+                          fontSize: 10,
+                        ),
                       ),
-                    ),
-                    Text(
-                      _selectedTime1 != null
-                          ? _selectedTime1
-                          : 'No time selected!',
-                      style: TextStyle(
-                        fontSize: 10,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-              Column(
-                children: [
-                  Text(
-                    'Exit',
-                    style: GoogleFonts.ubuntu(
-                      fontSize: 10,
-                    ),
-                  ),
-                  TextButton(
-                    child: Text(
-                      'Pick Date',
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 108, 117, 125),
-                      ),
-                    ),
-                    onPressed: () {
-                      showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime.now(),
-                        lastDate: DateTime(2025),
-                      ).then((date2) {
-                        setState(() {
-                          _dateTime2 = date2;
-                        });
-                      });
-                    },
-                  ),
-                  TextButton(
-                    child: Text(
-                      'Pick Time',
-                      style: TextStyle(
-                        fontSize: 10,
-                        fontWeight: FontWeight.bold,
-                        color: Color.fromARGB(255, 108, 117, 125),
-                      ),
-                    ),
-                    onPressed: () {
-                      _show1(2);
-                    },
-                  ),
-                  Text(
-                    _dateTime2 == null
-                        ? 'No date chosen'
-                        : '${DateFormat.yMMMd().format(_dateTime2)}',
-                    style: TextStyle(
-                      fontSize: 10,
-                    ),
-                  ),
-                  Text(
-                    _selectedTime2 != null
-                        ? _selectedTime2
-                        : 'No time selected!',
-                    style: TextStyle(
-                      fontSize: 10,
-                    ),
+                    ],
                   ),
                 ],
               ),
