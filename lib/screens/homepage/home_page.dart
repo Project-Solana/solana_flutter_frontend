@@ -29,9 +29,11 @@ class _HomePageState extends State<HomePage> {
         appBar: AppBar(
           backgroundColor: Color.fromARGB(255, 52, 58, 64),
           title: Text(
-            'PARK IT',
-            style: GoogleFonts.ubuntu(
-              fontSize: 25,
+            'PARK  IT',
+            style: GoogleFonts.bitter(
+              color: Colors.white,
+              fontSize: 30,
+              letterSpacing: 5,
             ),
           ),
           shadowColor: Color.fromARGB(255, 73, 80, 87),
@@ -41,14 +43,26 @@ class _HomePageState extends State<HomePage> {
         //Curved Navigation Bar
         extendBody: true,
         bottomNavigationBar: CurvedNavigationBar(
-          backgroundColor: Colors.white,
+          backgroundColor: Color.fromARGB(0, 255, 255, 255),
           color: Color.fromARGB(255, 52, 58, 64),
           key: _bottomNavigationKey,
           animationDuration: Duration(milliseconds: 300),
           items: <Widget>[
-            Icon(Icons.home, size: 25),
-            Icon(Icons.assignment_outlined, size: 25),
-            Icon(Icons.person, size: 25),
+            Icon(
+              Icons.home,
+              size: 25,
+              color: Colors.white,
+            ),
+            Icon(
+              Icons.assignment_outlined,
+              size: 25,
+              color: Colors.white,
+            ),
+            Icon(
+              Icons.person,
+              size: 25,
+              color: Colors.white,
+            ),
           ],
           onTap: (index) {
             setState(() {
