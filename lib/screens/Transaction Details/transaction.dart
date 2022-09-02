@@ -7,6 +7,7 @@ class Transaction {
   final String entrytime;
   final String exitdate;
   final String exittime;
+  final String slots;
 
   Transaction({
     @required this.id,
@@ -14,5 +15,6 @@ class Transaction {
     @required this.entrytime,
     @required this.exitdate,
     @required this.exittime,
+    @required this.slots,
   });
 }

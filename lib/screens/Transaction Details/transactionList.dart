@@ -55,6 +55,23 @@ class TransactionList extends StatelessWidget {
                         fontSize: 15,
                       ),
                     ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(
+                          'Slots',
+                          style: GoogleFonts.ubuntu(
+                            fontSize: 15,
+                          ),
+                        ),
+                        Text(
+                          tx.slots,
+                          style: GoogleFonts.ubuntu(
+                            fontSize: 15,
+                          ),
+                        ),
+                      ],
+                    ),
                   ],
                 ),
               );

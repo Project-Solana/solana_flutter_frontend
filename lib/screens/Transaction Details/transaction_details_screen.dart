@@ -5,19 +5,19 @@ import 'transaction.dart';
 class TransactionDetailsScreen extends StatelessWidget {
   final List<Transaction> trans = [
     Transaction(
-      id: 1001,
-      entrydate: '15th sep 2022',
-      entrytime: '2:30 pm',
-      exitdate: '20th sep 2022',
-      exittime: '3:30 pm',
-    ),
+        id: 1001,
+        entrydate: '15th sep 2022',
+        entrytime: '2:30 pm',
+        exitdate: '20th sep 2022',
+        exittime: '3:30 pm',
+        slots: '2'),
     Transaction(
-      id: 1002,
-      entrydate: '1st oct 2022',
-      entrytime: '4:30 pm',
-      exitdate: '3rd oct 2022',
-      exittime: '1:30 pm',
-    ),
+        id: 1002,
+        entrydate: '1st oct 2022',
+        entrytime: '4:30 pm',
+        exitdate: '3rd oct 2022',
+        exittime: '1:30 pm',
+        slots: '4'),
   ];
 
   @override
