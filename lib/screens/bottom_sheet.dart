@@ -91,7 +91,7 @@ class MyBottomSheet extends StatelessWidget {
                           children: <Widget>[
                             Padding(
                               padding:
-                                  const EdgeInsets.fromLTRB(70, 10, 100, 10),
+                                  const EdgeInsets.fromLTRB(70, 10, 70, 10),
                               child: Column(
                                 children: [
                                   Text(
