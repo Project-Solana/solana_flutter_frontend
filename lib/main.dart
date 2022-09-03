@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       home: HomePage(), //AuthScreen(),
       routes: {
-        HomePage.routema: (context) => HomePage(),
+        HomePage.routName: (context) => HomePage(),
         SettingsScreen.routebase: (ctx) => SettingsScreen(),
         ProfilePage.routeName: (context) => ProfilePage(),
         PaymentScreen.routeName: (context) => PaymentScreen(),
