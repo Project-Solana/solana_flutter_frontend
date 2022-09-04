@@ -26,7 +26,7 @@ class HomePageBody extends StatelessWidget {
                   child: Text(
                     'Park your vehicle with ParkIT',
                     style: GoogleFonts.caveat(
-                      color: Color.fromARGB(255, 58, 58, 58),
+                      color: Color.fromARGB(255, 0, 0, 0),
                       fontSize: 20,
                     ),
                   ),
