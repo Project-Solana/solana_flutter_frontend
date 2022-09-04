@@ -1,8 +1,7 @@
-import 'package:first_app/screens/Settings/settings_screen.dart';
 import 'package:flutter/material.dart';
-import './profile_widget.dart';
 import './user_preferences.dart';
 import './user.dart';
+import 'account_widget.dart';
 
 class ProfilePage extends StatefulWidget {
   ProfilePage({
@@ -28,49 +27,36 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Color.fromARGB(0, 0, 0, 0),
-        elevation: 0,
-      ),
       body: ListView(
-        physics: BouncingScrollPhysics(),
         children: [
-          ProfileWidget(
-            imagePath:
-                'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/768px-Breezeicons-actions-22-im-user.svg.png?20160527143724',
-            //user.imagePath,
-          ),
-          const SizedBox(height: 30),
-          buildName(user),
-          const SizedBox(height: 50),
-
-          //Settings
           Container(
-            margin: EdgeInsets.all(30),
-            child: RaisedButton(
-              onPressed: () {
-                Navigator.of(context).push(
-                  MaterialPageRoute(
-                    builder: (context) => SettingsScreen(),
-                  ),
-                );
-              },
-              color: Colors.blue,
-              hoverColor: Color.fromARGB(255, 5, 90, 174),
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    'Settings',
-                  ),
-                  Icon(Icons.settings),
-                ],
+            height: 150,
+            margin: EdgeInsets.all(15),
+            padding: EdgeInsets.all(30),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: Color.fromARGB(255, 31, 31, 31),
               ),
-              textColor: Colors.white,
+              borderRadius: BorderRadius.all(
+                Radius.circular(20),
+              ),
+            ),
+            child: Row(
+              children: [
+                buildName(user),
+                const SizedBox(
+                  width: 60,
+                ),
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.network(
+                    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/768px-Breezeicons-actions-22-im-user.svg.png?20160527143724',
+                  ),
+                ),
+              ],
             ),
           ),
+          AccountWidget(),
         ],
       ),
     );
@@ -83,7 +69,7 @@ class _ProfilePageState extends State<ProfilePage> {
             user.name,
             style: TextStyle(
               fontWeight: FontWeight.bold,
-              fontSize: 30,
+              fontSize: 15,
             ),
           ),
           const SizedBox(height: 8),
@@ -91,6 +77,7 @@ class _ProfilePageState extends State<ProfilePage> {
             user.mobile_no,
             style: TextStyle(
               color: Colors.grey,
+              fontSize: 10,
             ),
           ),
           const SizedBox(height: 8),
@@ -98,13 +85,14 @@ class _ProfilePageState extends State<ProfilePage> {
             user.email,
             style: TextStyle(
               color: Colors.grey,
+              fontSize: 10,
             ),
           ),
           const SizedBox(height: 8),
           Text(
             user.key,
             style: TextStyle(
-              fontSize: 25,
+              fontSize: 13,
             ),
           ),
         ],

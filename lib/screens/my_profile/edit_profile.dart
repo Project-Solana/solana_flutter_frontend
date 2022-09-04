@@ -36,14 +36,14 @@ class _EditProfilePageState extends State<EditProfilePage> {
         padding: EdgeInsets.symmetric(horizontal: 32),
         physics: BouncingScrollPhysics(),
         children: [
-          ProfileWidget(
-            imagePath: UserPreferences.myUser.imagePath,
-            isEdit: true,
-            onClicked: () async {},
-          ),
-          const SizedBox(
-            height: 24,
-          ),
+          // ProfileWidget(
+          //   imagePath: UserPreferences.myUser.imagePath,
+          //   isEdit: true,
+          //   onClicked: () async {},
+          // ),
+          // const SizedBox(
+          //   height: 24,
+          // ),
           TextField(
             controller: nameController,
             decoration: InputDecoration(

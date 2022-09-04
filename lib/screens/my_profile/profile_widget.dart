@@ -16,9 +16,7 @@ class ProfileWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final color = Theme.of(context).colorScheme.primary;
 
-    return Center(
-      child: buildImage(),
-    );
+    return buildImage();
   }
 
   Widget buildImage() {
@@ -29,8 +27,8 @@ class ProfileWidget extends StatelessWidget {
         child: Ink.image(
           image: image,
           fit: BoxFit.cover,
-          width: 128,
-          height: 128,
+          width: 80,
+          height: 80,
           child: InkWell(onTap: onClicked),
         ),
       ),
