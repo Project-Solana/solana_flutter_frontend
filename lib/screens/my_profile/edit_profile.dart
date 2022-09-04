@@ -1,4 +1,3 @@
-import 'package:first_app/screens/my_profile/profile_page.dart';
 import 'package:first_app/screens/my_profile/profile_widget.dart';
 import 'package:flutter/material.dart';
 import './user_preferences.dart';
@@ -29,21 +28,21 @@ class _EditProfilePageState extends State<EditProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       height: 450,
       child: ListView(
         shrinkWrap: true,
-        padding: EdgeInsets.symmetric(horizontal: 32),
-        physics: BouncingScrollPhysics(),
+        padding: const EdgeInsets.symmetric(horizontal: 32),
+        physics: const BouncingScrollPhysics(),
         children: [
-          // ProfileWidget(
-          //   imagePath: UserPreferences.myUser.imagePath,
-          //   isEdit: true,
-          //   onClicked: () async {},
-          // ),
-          // const SizedBox(
-          //   height: 24,
-          // ),
+          ProfileWidget(
+            imagePath: UserPreferences.myUser.imagePath,
+            isEdit: true,
+            onClicked: () async {},
+          ),
+          const SizedBox(
+            height: 24,
+          ),
           TextField(
             controller: nameController,
             decoration: InputDecoration(
@@ -83,9 +82,19 @@ class _EditProfilePageState extends State<EditProfilePage> {
               email = val;
             },
           ),
-          RaisedButton(
-            color: Colors.blue,
-            child: Text(
+          ElevatedButton(
+            style: ButtonStyle(
+                backgroundColor: MaterialStateProperty.all(Colors.blue),
+                foregroundColor: MaterialStateProperty.all(Colors.white),
+                overlayColor: MaterialStateProperty.resolveWith<Color>(
+                    (Set<MaterialState> states) {
+                  if (states.contains(MaterialState.hovered))
+                    return Color.fromARGB(255, 5, 90, 174);
+                  return null; // Defer to the widget's default.
+                }), //Overlay Color
+                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(10)))),
+            child: const Text(
               'Done',
               style: TextStyle(
                 fontSize: 10,

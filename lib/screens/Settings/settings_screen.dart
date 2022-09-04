@@ -46,12 +46,19 @@ class _SettingsScreenState extends State<SettingsScreen> {
       body: Container(
         alignment: Alignment.topCenter,
         margin: EdgeInsets.all(30),
-        child: RaisedButton(
+        child: ElevatedButton(
           onPressed: () => openBottomSheet(context),
-          color: Colors.blue,
-          hoverColor: Color.fromARGB(255, 5, 90, 174),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          style: ButtonStyle(
+              backgroundColor: MaterialStateProperty.all(Colors.blue),
+              foregroundColor: MaterialStateProperty.all(Colors.white),
+              overlayColor: MaterialStateProperty.resolveWith<Color>(
+                  (Set<MaterialState> states) {
+                if (states.contains(MaterialState.hovered))
+                  return Color.fromARGB(255, 5, 90, 174);
+                return null; // Defer to the widget's default.
+              }), //Overlay Color
+              shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(10)))),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -61,7 +68,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
               Icon(Icons.edit),
             ],
           ),
-          textColor: Colors.white,
         ),
       ),
     );
