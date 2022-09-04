@@ -3,7 +3,7 @@ import '../my_profile/edit_profile.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key key}) : super(key: key);
-  static const routebase = '/settings';
+  static const routeName = '/settings';
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
