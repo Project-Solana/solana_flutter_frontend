@@ -7,6 +7,7 @@ class MyBottomSheet extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.transparent,
       padding: EdgeInsets.all(16),
       margin: EdgeInsets.all(5),
       child: Column(
