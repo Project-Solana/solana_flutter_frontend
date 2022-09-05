@@ -77,17 +77,17 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                 borderRadius: BorderRadius.circular(16.0),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(
-                    sigmaX: 2,
-                    sigmaY: 2,
+                    sigmaX: 1,
+                    sigmaY: 1,
                   ),
                   child: Container(
                     height: 100,
                     width: 400,
                     margin: EdgeInsets.fromLTRB(5, 10, 10, 10),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.2),
+                      color: Color.fromARGB(47, 6, 14, 150),
                       border: Border.all(
-                        color: Color.fromARGB(255, 255, 255, 255),
+                        color: Colors.white,
                       ),
                       borderRadius: BorderRadius.circular(16.0),
                     ),
@@ -105,7 +105,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                               border: InputBorder.none,
                               labelText: 'Enter your current location',
                               labelStyle: GoogleFonts.quicksand(
-                                color: Color.fromARGB(255, 0, 0, 0),
+                                color: Color.fromARGB(255, 255, 255, 255),
                                 fontSize: 14,
                               ),
                             ),
@@ -157,15 +157,15 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                 borderRadius: BorderRadius.circular(16.0),
                 child: BackdropFilter(
                   filter: ImageFilter.blur(
-                    sigmaX: 5.0,
-                    sigmaY: 5.0,
+                    sigmaX: 1.0,
+                    sigmaY: 1.0,
                   ),
                   child: Container(
                     height: 150,
                     width: 400,
                     margin: EdgeInsets.fromLTRB(4, 10, 10, 10),
                     decoration: BoxDecoration(
-                      color: Colors.white.withOpacity(0.2),
+                      color: Color.fromARGB(47, 6, 14, 150),
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(16.0),
                     ),
@@ -193,46 +193,45 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                                   ),
                                   onPressed: () {
                                     showDialog(
-                                        context: context,
-                                        builder: (context) {
-                                          return AlertDialog(
-                                            content: TextField(
-                                              controller: slotController,
-                                              keyboardType:
-                                                  TextInputType.number,
-                                              decoration: InputDecoration(
-                                                labelText:
-                                                    'Enter no. of slots to be booked',
-                                                labelStyle:
-                                                    GoogleFonts.quicksand(
-                                                  fontSize: 14,
-                                                ),
+                                      context: context,
+                                      builder: (context) {
+                                        return AlertDialog(
+                                          content: TextField(
+                                            controller: slotController,
+                                            keyboardType: TextInputType.number,
+                                            decoration: InputDecoration(
+                                              labelText:
+                                                  'Enter no. of slots to be booked',
+                                              labelStyle: GoogleFonts.quicksand(
+                                                fontSize: 14,
                                               ),
-                                              // onChanged: (val) {
-                                              //   int val = int.parse(slotController.text);
-                                              //   _totalSlots = val;
-                                              // },
                                             ),
-                                            actions: [
-                                              TextButton(
-                                                onPressed: () {
-                                                  setState(() {
-                                                    _totalSlots = int.parse(
-                                                        slotController.text);
-                                                  });
+                                            // onChanged: (val) {
+                                            //   int val = int.parse(slotController.text);
+                                            //   _totalSlots = val;
+                                            // },
+                                          ),
+                                          actions: [
+                                            TextButton(
+                                              onPressed: () {
+                                                setState(() {
+                                                  _totalSlots = int.parse(
+                                                      slotController.text);
+                                                });
 
-                                                  print(_totalSlots);
-                                                },
-                                                child: Text('Save'),
-                                              ),
-                                              TextButton(
-                                                onPressed: () =>
-                                                    Navigator.pop(context),
-                                                child: Text('Done'),
-                                              ),
-                                            ],
-                                          );
-                                        });
+                                                print(_totalSlots);
+                                              },
+                                              child: Text('Save'),
+                                            ),
+                                            TextButton(
+                                              onPressed: () =>
+                                                  Navigator.pop(context),
+                                              child: Text('Done'),
+                                            ),
+                                          ],
+                                        );
+                                      },
+                                    );
                                   },
                                 ),
                                 Text(

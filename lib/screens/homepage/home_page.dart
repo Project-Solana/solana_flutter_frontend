@@ -7,6 +7,7 @@ import '../my_profile/profile_page.dart';
 import './home_page_body.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import '../bottom_sheet.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -39,24 +40,40 @@ class _HomePageState extends State<HomePage> {
         child: Scaffold(
           backgroundColor: Colors.transparent,
           appBar: PreferredSize(
-            child: ClipRRect(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                child: AppBar(
-                  backgroundColor: Colors.black.withOpacity(0.2),
-                  title: Text(
-                    'Park It',
-                    style: GoogleFonts.pinyonScript(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 40,
-                        letterSpacing: 0,
-                        wordSpacing: 17),
-                  ),
-                  centerTitle: true,
-                  leading: Icon(Icons.chevron_left),
-                  elevation: 0.0,
+            child: AppBar(
+              backgroundColor: Color.fromARGB(64, 52, 58, 64),
+              title: Text(
+                'Rumaal',
+                style: GoogleFonts.caveat(
+                  fontSize: 40,
+                  foreground: Paint()
+                    ..style = PaintingStyle.stroke
+                    ..strokeWidth = 1
+                    ..color = Color.fromARGB(255, 255, 255, 255),
+                  letterSpacing: 0,
+                  wordSpacing: 17,
+                  shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(2, 2),
+                      blurRadius: 5.0,
+                      color: Color.fromARGB(255, 6, 14, 150),
+                    ),
+                  ],
                 ),
               ),
+              centerTitle: true,
+              leading: Icon(Icons.chevron_left),
+              actions: [
+                IconButton(
+                  icon: Icon(Icons.location_pin),
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () => openBottomSheet(context),
+                )
+              ],
+              elevation: 0.0,
             ),
             preferredSize: Size(
               double.infinity,
@@ -68,6 +85,7 @@ class _HomePageState extends State<HomePage> {
           extendBody: true,
           bottomNavigationBar: CurvedNavigationBar(
             backgroundColor: Colors.transparent,
+            buttonBackgroundColor: Color.fromARGB(47, 6, 14, 150),
             color: Color.fromARGB(64, 52, 58, 64),
             key: _bottomNavigationKey,
             animationDuration: Duration(milliseconds: 300),
@@ -101,4 +119,17 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+}
+
+void openBottomSheet(BuildContext ctx) {
+  showModalBottomSheet(
+    isScrollControlled: true,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    context: ctx,
+    builder: (ctx) {
+      return const MyBottomSheet();
+    },
+  );
 }

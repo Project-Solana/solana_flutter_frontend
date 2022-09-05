@@ -44,6 +44,7 @@ dependencies:
   google_fonts: ^3.0.1
   intl: ^0.17.0
   curved_navigation_bar: ^1.0.3
+  google_maps_flutter: ^2.2.0
 
 dev_dependencies:
   flutter_test:
@@ -71,8 +72,6 @@ flutter:
   assets:
     - assets/car_parking.jpg
     - assets/background 1.jpg
-    - assets/background 2.jpg
-
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware
 
