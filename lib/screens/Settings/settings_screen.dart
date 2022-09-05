@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import '../my_profile/edit_profile.dart';
+import 'package:google_fonts/google_fonts.dart';
+import '../my_profile/edit_profile.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key key}) : super(key: key);
@@ -43,26 +45,81 @@ class _SettingsScreenState extends State<SettingsScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-      body: Container(
-        alignment: Alignment.topCenter,
-        margin: EdgeInsets.all(30),
-        child: RaisedButton(
-          onPressed: () => openBottomSheet(context),
-          color: Colors.blue,
-          hoverColor: Color.fromARGB(255, 5, 90, 174),
-          shape:
-              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Edit Profile',
-              ),
-              Icon(Icons.edit),
-            ],
+      body: Column(
+        children: <Widget>[
+          Container(
+            width: double.infinity,
+            child: Card(
+                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 5,
+                  ),
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton(
+                      child: Text(
+                        'Edit Profile',
+                        style: GoogleFonts.poppins(
+                          fontSize: 15,
+                          color: Colors.black,
+                        ),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ),
+                )),
           ),
-          textColor: Colors.white,
-        ),
+          Container(
+            width: double.infinity,
+            child: Card(
+                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 5,
+                  ),
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton(
+                      child: Text(
+                        'Account Settings',
+                        style: GoogleFonts.poppins(
+                          fontSize: 15,
+                          color: Colors.black,
+                        ),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ),
+                )),
+          ),
+          Container(
+            width: double.infinity,
+            child: Card(
+                margin: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+                child: Padding(
+                  padding: EdgeInsets.symmetric(
+                    vertical: 10,
+                    horizontal: 5,
+                  ),
+                  child: Container(
+                    alignment: Alignment.centerLeft,
+                    child: TextButton(
+                      child: Text(
+                        'Notification Settings',
+                        style: GoogleFonts.poppins(
+                          fontSize: 15,
+                          color: Colors.black,
+                        ),
+                      ),
+                      onPressed: () {},
+                    ),
+                  ),
+                )),
+          ),
+        ],
       ),
     );
   }
