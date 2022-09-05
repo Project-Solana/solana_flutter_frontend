@@ -45,7 +45,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
         backgroundColor: Colors.transparent,
         elevation: 0,
       ),
-<<<<<<< HEAD
       body: Column(
         children: <Widget>[
           Container(
@@ -121,34 +120,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 )),
           ),
         ],
-=======
-      body: Container(
-        alignment: Alignment.topCenter,
-        margin: EdgeInsets.all(30),
-        child: ElevatedButton(
-          onPressed: () => openBottomSheet(context),
-          style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.blue),
-              foregroundColor: MaterialStateProperty.all(Colors.white),
-              overlayColor: MaterialStateProperty.resolveWith<Color>(
-                  (Set<MaterialState> states) {
-                if (states.contains(MaterialState.hovered))
-                  return Color.fromARGB(255, 5, 90, 174);
-                return null; // Defer to the widget's default.
-              }), //Overlay Color
-              shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(10)))),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(
-                'Edit Profile',
-              ),
-              Icon(Icons.edit),
-            ],
-          ),
-        ),
->>>>>>> dbc6f23c364eebba2af8f5fef4c3806f1f453ceb
       ),
     );
   }
