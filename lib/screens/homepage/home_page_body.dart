@@ -9,7 +9,7 @@ class HomePageBody extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       child: Container(
-        padding: EdgeInsets.all(15),
+        padding: EdgeInsets.fromLTRB(16, 60, 16, 16),
         child: Column(
           children: <Widget>[
             Row(

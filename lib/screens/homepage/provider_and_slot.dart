@@ -85,7 +85,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                     width: 400,
                     margin: EdgeInsets.fromLTRB(5, 10, 10, 10),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(47, 6, 14, 150),
+                      color: Color.fromARGB(47, 52, 52, 52),
                       border: Border.all(
                         color: Colors.white,
                       ),
@@ -115,14 +115,14 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                           height: 30,
                           width: 119,
                           alignment: Alignment.bottomCenter,
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(0, 255, 255, 255),
-                            borderRadius: BorderRadius.circular(16.0),
-                          ),
+                          // decoration: BoxDecoration(
+                          //   color: Color.fromARGB(255, 0, 0, 0),
+                          //   borderRadius: BorderRadius.circular(16.0),
+                          // ),
                           child: ElevatedButton(
                             style: ButtonStyle(
                                 backgroundColor: MaterialStateProperty.all(
-                                    Color.fromARGB(255, 33, 37, 41))),
+                                    Color.fromARGB(255, 0, 0, 0))),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
@@ -165,7 +165,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                     width: 400,
                     margin: EdgeInsets.fromLTRB(4, 10, 10, 10),
                     decoration: BoxDecoration(
-                      color: Color.fromARGB(47, 6, 14, 150),
+                      color: Color.fromARGB(47, 52, 52, 52),
                       border: Border.all(color: Colors.white),
                       borderRadius: BorderRadius.circular(16.0),
                     ),
@@ -257,7 +257,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                                   ),
                                   TextButton(
                                     child: Text(
-                                      'Pick Date',
+                                      'Choose Date',
                                       style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.bold,
@@ -280,7 +280,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                                   ),
                                   TextButton(
                                     child: Text(
-                                      'Pick Time',
+                                      'Choose Time',
                                       style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.bold,
@@ -321,7 +321,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                                 ),
                                 TextButton(
                                   child: Text(
-                                    'Pick Date',
+                                    'Choose Date',
                                     style: TextStyle(
                                       fontSize: 10,
                                       fontWeight: FontWeight.bold,
@@ -343,7 +343,7 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                                 ),
                                 TextButton(
                                   child: Text(
-                                    'Pick Time',
+                                    'Choose Time',
                                     style: TextStyle(
                                       fontSize: 10,
                                       fontWeight: FontWeight.bold,

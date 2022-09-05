@@ -1,5 +1,5 @@
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:geolocator/geolocator.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../Transaction%20Details/transaction_details_screen.dart';
@@ -31,17 +31,19 @@ class _HomePageState extends State<HomePage> {
       home: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage("assets/background 1.jpg"),
-          ),
-        ),
+        decoration: BoxDecoration(color: Color.fromARGB(255, 242, 209, 157)),
+        // decoration: BoxDecoration(
+        //   image: DecorationImage(
+        //     fit: BoxFit.fill,
+        //     image: AssetImage("assets/background 1.jpg"),
+        //   ),
+        // ),
         child: Scaffold(
+          extendBodyBehindAppBar: true,
           backgroundColor: Colors.transparent,
           appBar: PreferredSize(
             child: AppBar(
-              backgroundColor: Color.fromARGB(64, 52, 58, 64),
+              backgroundColor: Color.fromARGB(20, 52, 58, 64),
               title: Text(
                 'Rumaal',
                 style: GoogleFonts.caveat(
@@ -66,7 +68,9 @@ class _HomePageState extends State<HomePage> {
               actions: [
                 IconButton(
                   icon: Icon(Icons.location_pin),
-                  onPressed: () {},
+                  onPressed: () {
+                    getCurrentPosition();
+                  },
                 ),
                 IconButton(
                   icon: Icon(Icons.search),
@@ -85,7 +89,7 @@ class _HomePageState extends State<HomePage> {
           extendBody: true,
           bottomNavigationBar: CurvedNavigationBar(
             backgroundColor: Colors.transparent,
-            buttonBackgroundColor: Color.fromARGB(47, 6, 14, 150),
+            buttonBackgroundColor: Color.fromARGB(47, 242, 209, 157),
             color: Color.fromARGB(64, 52, 58, 64),
             key: _bottomNavigationKey,
             animationDuration: Duration(milliseconds: 300),
@@ -132,4 +136,19 @@ void openBottomSheet(BuildContext ctx) {
       return const MyBottomSheet();
     },
   );
+}
+
+void getCurrentPosition() async {
+  //Permission
+  LocationPermission permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.denied ||
+      permission == LocationPermission.deniedForever) {
+    print("Permission Not Given");
+    LocationPermission asked = await Geolocator.requestPermission();
+  } else {
+    Position currentPosition = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    print("Lattitutde: " + currentPosition.latitude.toString());
+    print("Longitude: " + currentPosition.longitude.toString());
+  }
 }
