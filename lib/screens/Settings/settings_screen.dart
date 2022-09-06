@@ -67,7 +67,9 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           color: Colors.black,
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        openBottomSheet(context);
+                      },
                     ),
                   ),
                 )),

@@ -35,10 +35,16 @@ class _EditProfilePageState extends State<EditProfilePage> {
         padding: const EdgeInsets.symmetric(horizontal: 32),
         physics: const BouncingScrollPhysics(),
         children: [
-          ProfileWidget(
-            imagePath: UserPreferences.myUser.imagePath,
-            isEdit: true,
-            onClicked: () async {},
+          Container(
+            margin: EdgeInsets.all(10),
+            height: 70,
+            width: 60,
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(8.0),
+              child: Image.network(
+                'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/768px-Breezeicons-actions-22-im-user.svg.png?20160527143724',
+              ),
+            ),
           ),
           const SizedBox(
             height: 24,
