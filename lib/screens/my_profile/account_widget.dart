@@ -40,31 +40,31 @@ class AccountWidget extends StatelessWidget {
             ),
           ),
         ),
-        Card(
-          margin: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
-          child: Padding(
-            padding: EdgeInsets.symmetric(
-              vertical: 10,
-              horizontal: 5,
-            ),
-            child: Row(
-              children: [
-                Expanded(
-                  child: Text(
-                    'Notifications',
-                    style: GoogleFonts.poppins(
-                      fontSize: 15,
-                    ),
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.arrow_forward_ios),
-                  onPressed: () {},
-                ),
-              ],
-            ),
-          ),
-        ),
+        // Card(
+        //   margin: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
+        //   child: Padding(
+        //     padding: EdgeInsets.symmetric(
+        //       vertical: 10,
+        //       horizontal: 5,
+        //     ),
+        //     child: Row(
+        //       children: [
+        //         Expanded(
+        //           child: Text(
+        //             'Notifications',
+        //             style: GoogleFonts.poppins(
+        //               fontSize: 15,
+        //             ),
+        //           ),
+        //         ),
+        //         IconButton(
+        //           icon: Icon(Icons.arrow_forward_ios),
+        //           onPressed: () {},
+        //         ),
+        //       ],
+        //     ),
+        //   ),
+        // ),
         Card(
           margin: EdgeInsets.symmetric(vertical: 20, horizontal: 5),
           child: Padding(

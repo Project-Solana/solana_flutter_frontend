@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import '../Transaction%20Details/transaction_details_screen.dart';
 import '../my_profile/profile_page.dart';
 import './home_page_body.dart';
-import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import '../bottom_sheet.dart';
 
