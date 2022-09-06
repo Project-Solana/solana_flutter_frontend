@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import '../my_profile/edit_profile.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../my_profile/edit_profile.dart';
+import '../Settings/account_setting_screen.dart';
 
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key key}) : super(key: key);
@@ -87,10 +88,16 @@ class _SettingsScreenState extends State<SettingsScreen> {
                         'Account Settings',
                         style: GoogleFonts.poppins(
                           fontSize: 15,
-                          color: Colors.black,
+                          color: Colors.black,                        
                         ),
                       ),
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => AccountsSetting(),
+                      ),
+                    );
+                      },
                     ),
                   ),
                 )),
