@@ -1,5 +1,5 @@
 import 'package:google_fonts/google_fonts.dart';
-
+import 'package:geolocator/geolocator.dart';
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import '../Transaction%20Details/transaction_details_screen.dart';
@@ -7,6 +7,7 @@ import '../my_profile/profile_page.dart';
 import './home_page_body.dart';
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import '../bottom_sheet.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key key}) : super(key: key);
@@ -30,33 +31,53 @@ class _HomePageState extends State<HomePage> {
       home: Container(
         width: double.infinity,
         height: double.infinity,
-        decoration: BoxDecoration(
-          image: DecorationImage(
-            fit: BoxFit.fill,
-            image: AssetImage("assets/background 1.jpg"),
-          ),
-        ),
+        decoration: BoxDecoration(color: Color.fromARGB(255, 242, 209, 157)),
+        // decoration: BoxDecoration(
+        //   image: DecorationImage(
+        //     fit: BoxFit.fill,
+        //     image: AssetImage("assets/background 1.jpg"),
+        //   ),
+        // ),
         child: Scaffold(
+          extendBodyBehindAppBar: true,
           backgroundColor: Colors.transparent,
           appBar: PreferredSize(
-            child: ClipRRect(
-              child: BackdropFilter(
-                filter: ImageFilter.blur(sigmaX: 5, sigmaY: 5),
-                child: AppBar(
-                  backgroundColor: Colors.black.withOpacity(0.2),
-                  title: Text(
-                    'Park It',
-                    style: GoogleFonts.pinyonScript(
-                        color: Color.fromARGB(255, 255, 255, 255),
-                        fontSize: 40,
-                        letterSpacing: 0,
-                        wordSpacing: 17),
-                  ),
-                  centerTitle: true,
-                  leading: Icon(Icons.chevron_left),
-                  elevation: 0.0,
+            child: AppBar(
+              backgroundColor: Color.fromARGB(20, 52, 58, 64),
+              title: Text(
+                'Rumaal',
+                style: GoogleFonts.caveat(
+                  fontSize: 40,
+                  foreground: Paint()
+                    ..style = PaintingStyle.stroke
+                    ..strokeWidth = 1
+                    ..color = Color.fromARGB(255, 255, 255, 255),
+                  letterSpacing: 0,
+                  wordSpacing: 17,
+                  shadows: <Shadow>[
+                    Shadow(
+                      offset: Offset(2, 2),
+                      blurRadius: 5.0,
+                      color: Color.fromARGB(255, 6, 14, 150),
+                    ),
+                  ],
                 ),
               ),
+              centerTitle: true,
+              leading: Icon(Icons.chevron_left),
+              actions: [
+                IconButton(
+                  icon: Icon(Icons.location_pin),
+                  onPressed: () {
+                    getCurrentPosition();
+                  },
+                ),
+                IconButton(
+                  icon: Icon(Icons.search),
+                  onPressed: () => openBottomSheet(context),
+                )
+              ],
+              elevation: 0.0,
             ),
             preferredSize: Size(
               double.infinity,
@@ -68,6 +89,7 @@ class _HomePageState extends State<HomePage> {
           extendBody: true,
           bottomNavigationBar: CurvedNavigationBar(
             backgroundColor: Colors.transparent,
+            buttonBackgroundColor: Color.fromARGB(47, 242, 209, 157),
             color: Color.fromARGB(64, 52, 58, 64),
             key: _bottomNavigationKey,
             animationDuration: Duration(milliseconds: 300),
@@ -100,5 +122,33 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+}
+
+void openBottomSheet(BuildContext ctx) {
+  showModalBottomSheet(
+    isScrollControlled: true,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    context: ctx,
+    builder: (ctx) {
+      return const MyBottomSheet();
+    },
+  );
+}
+
+void getCurrentPosition() async {
+  //Permission
+  LocationPermission permission = await Geolocator.checkPermission();
+  if (permission == LocationPermission.denied ||
+      permission == LocationPermission.deniedForever) {
+    print("Permission Not Given");
+    LocationPermission asked = await Geolocator.requestPermission();
+  } else {
+    Position currentPosition = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    print("Lattitutde: " + currentPosition.latitude.toString());
+    print("Longitude: " + currentPosition.longitude.toString());
   }
 }
