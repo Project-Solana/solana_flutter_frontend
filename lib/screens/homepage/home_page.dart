@@ -63,7 +63,7 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
               centerTitle: true,
-              leading: Icon(Icons.chevron_left),
+              // leading: Icon(Icons.chevron_left),
               actions: [
                 IconButton(
                   icon: Icon(Icons.location_pin),
