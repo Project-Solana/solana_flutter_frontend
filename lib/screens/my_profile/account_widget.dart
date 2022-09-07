@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import '../Settings/settings_screen.dart';
+import 'package:first_app/authentication/auth_screen.dart';
 
 class AccountWidget extends StatelessWidget {
   const AccountWidget({Key key}) : super(key: key);
@@ -134,7 +135,13 @@ class AccountWidget extends StatelessWidget {
                 ),
                 IconButton(
                   icon: Icon(Icons.arrow_forward_ios),
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                        builder: (context) => AuthScreen(),
+                      ),
+                    );
+                  },
                 ),
               ],
             ),
