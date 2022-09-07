@@ -27,6 +27,7 @@ class HomePageBody extends StatelessWidget {
             Stack(
               children: [
                 Container(
+                  width: double.infinity,
                   color: Color.fromARGB(163, 226, 248, 203),
                   height: 200,
 
