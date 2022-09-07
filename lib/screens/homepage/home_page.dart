@@ -27,98 +27,98 @@ class _HomePageState extends State<HomePage> {
 
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Container(
-        width: double.infinity,
-        height: double.infinity,
-        decoration: BoxDecoration(color: Color.fromARGB(255, 242, 209, 157)),
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     fit: BoxFit.fill,
-        //     image: AssetImage("assets/background 1.jpg"),
+      // home: Container(
+      //   width: double.infinity,
+      //   height: double.infinity,
+      //   decoration: BoxDecoration(color: Color.fromARGB(197, 244, 242, 242)),
+      // decoration: BoxDecoration(
+      //   image: DecorationImage(
+      //     fit: BoxFit.fill,
+      //     image: AssetImage("assets/background 1.jpg"),
+      //   ),
+      // ),
+      home: Scaffold(
+        //extendBodyBehindAppBar: true,
+
+        // appBar: PreferredSize(
+        //   child: AppBar(
+        //     backgroundColor: Color.fromARGB(197, 244, 242, 242),
+        //     title: Text(
+        //       'Rumaal',
+        //       style: GoogleFonts.caveat(
+        //         fontSize: 40,
+        //         foreground: Paint()
+        //           ..style = PaintingStyle.stroke
+        //           ..strokeWidth = 1
+        //           ..color = Color.fromARGB(255, 255, 255, 255),
+        //         letterSpacing: 0,
+        //         wordSpacing: 17,
+        //         shadows: <Shadow>[
+        //           Shadow(
+        //             offset: Offset(2, 2),
+        //             blurRadius: 5.0,
+        //             color: Color.fromARGB(255, 6, 14, 150),
+        //           ),
+        //         ],
+        //       ),
+        //     ),
+        //     centerTitle: true,
+        //     actions: [
+        //       IconButton(
+        //         icon: Icon(Icons.location_pin),
+        //         onPressed: () {
+        //           getCurrentPosition();
+        //         },
+        //       ),
+        //       IconButton(
+        //         icon: Icon(Icons.search),
+        //         onPressed: () => openBottomSheet(context),
+        //       )
+        //     ],
+        //     elevation: 0.0,
+        //   ),
+        //   preferredSize: Size(
+        //     double.infinity,
+        //     56.0,
         //   ),
         // ),
-        child: Scaffold(
-          extendBodyBehindAppBar: true,
-          backgroundColor: Colors.transparent,
-          appBar: PreferredSize(
-            child: AppBar(
-              backgroundColor: Color.fromARGB(20, 52, 58, 64),
-              title: Text(
-                'Rumaal',
-                style: GoogleFonts.caveat(
-                  fontSize: 40,
-                  foreground: Paint()
-                    ..style = PaintingStyle.stroke
-                    ..strokeWidth = 1
-                    ..color = Color.fromARGB(255, 255, 255, 255),
-                  letterSpacing: 0,
-                  wordSpacing: 17,
-                  shadows: <Shadow>[
-                    Shadow(
-                      offset: Offset(2, 2),
-                      blurRadius: 5.0,
-                      color: Color.fromARGB(255, 6, 14, 150),
-                    ),
-                  ],
-                ),
-              ),
-              centerTitle: true,
-              // leading: Icon(Icons.chevron_left),
-              actions: [
-                IconButton(
-                  icon: Icon(Icons.location_pin),
-                  onPressed: () {
-                    getCurrentPosition();
-                  },
-                ),
-                IconButton(
-                  icon: Icon(Icons.search),
-                  onPressed: () => openBottomSheet(context),
-                )
-              ],
-              elevation: 0.0,
-            ),
-            preferredSize: Size(
-              double.infinity,
-              56.0,
-            ),
-          ),
 
-          //Curved Navigation Bar
-          extendBody: true,
-          bottomNavigationBar: CurvedNavigationBar(
-            backgroundColor: Colors.transparent,
-            buttonBackgroundColor: Color.fromARGB(47, 242, 209, 157),
-            color: Color.fromARGB(64, 52, 58, 64),
-            key: _bottomNavigationKey,
-            animationDuration: Duration(milliseconds: 300),
-            items: <Widget>[
-              Icon(
-                Icons.home,
-                size: 25,
-                color: Colors.white,
-              ),
-              Icon(
-                Icons.assignment_outlined,
-                size: 25,
-                color: Colors.white,
-              ),
-              Icon(
-                Icons.person,
-                size: 25,
-                color: Colors.white,
-              ),
-            ],
-            onTap: (index) {
-              setState(() {
-                _page = index;
-              });
-            },
-          ),
+        
 
-          //Navigating to different screens through curved navigation barS
-          body: screens[_page],
+        //Curved Navigation Bar
+        extendBody: true,
+        bottomNavigationBar: CurvedNavigationBar(
+          backgroundColor: Color.fromARGB(197, 244, 242, 242),
+          buttonBackgroundColor: Color.fromARGB(47, 242, 209, 157),
+          color: Color.fromARGB(157, 4, 162, 125),
+          key: _bottomNavigationKey,
+          animationDuration: Duration(milliseconds: 300),
+          items: <Widget>[
+            Icon(
+              Icons.home,
+              size: 25,
+              color: Colors.black,
+            ),
+            Icon(
+              Icons.assignment_outlined,
+              size: 25,
+              color: Colors.black,
+            ),
+            Icon(
+              Icons.person,
+              size: 25,
+              color: Colors.black,
+            ),
+          ],
+          onTap: (index) {
+            setState(() {
+              _page = index;
+            });
+          },
         ),
+
+        //Navigating to different screens through curved navigation barS
+        body: screens[_page],
       ),
     );
   }
