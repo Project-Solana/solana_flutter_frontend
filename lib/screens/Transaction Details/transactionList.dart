@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:glassmorphism/glassmorphism.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'transaction.dart';
 
@@ -15,64 +16,91 @@ class TransactionList extends StatelessWidget {
           alignment: Alignment.center,
           child: Column(
             children: transactions.map((tx) {
-              return Container(
+              return GlassmorphicContainer(
                 width: 300,
-                margin: EdgeInsets.all(15),
-                padding: EdgeInsets.all(10),
-                decoration: BoxDecoration(
-                  border: Border.all(color: Color.fromARGB(255, 43, 43, 43)),
-                  borderRadius: BorderRadius.circular(15),
-                ),
-                child: Column(
-                  children: <Widget>[
-                    Text(
-                      tx.id.toString(),
-                      style: GoogleFonts.ubuntu(
-                        fontSize: 15,
-                      ),
-                    ),
-                    Text(
-                      tx.entrydate,
-                      style: GoogleFonts.ubuntu(
-                        fontSize: 15,
-                      ),
-                    ),
-                    Text(
-                      tx.entrytime,
-                      style: GoogleFonts.ubuntu(
-                        fontSize: 15,
-                      ),
-                    ),
-                    Text(
-                      tx.exitdate,
-                      style: GoogleFonts.ubuntu(
-                        fontSize: 15,
-                      ),
-                    ),
-                    Text(
-                      tx.exittime,
-                      style: GoogleFonts.ubuntu(
-                        fontSize: 15,
-                      ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Text(
-                          'Slots',
-                          style: GoogleFonts.ubuntu(
-                            fontSize: 15,
-                          ),
-                        ),
-                        Text(
-                          tx.slots,
-                          style: GoogleFonts.ubuntu(
-                            fontSize: 15,
-                          ),
-                        ),
-                      ],
-                    ),
+                height: 124,
+                borderRadius: 2,
+                blur: 20,
+                linearGradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color.fromARGB(255, 102, 51, 152).withOpacity(0.2),
+                    Color.fromARGB(255, 34, 49, 121).withOpacity(0.2),
                   ],
+                  stops: [0.1, 1],
+                ),
+                borderGradient: LinearGradient(
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                  colors: [
+                    Color.fromARGB(255, 255, 255, 255),
+                    Color.fromARGB(255, 255, 255, 255),
+                  ],
+                ),
+                border: 0.5,
+                // margin: EdgeInsets.all(15),
+                // padding: EdgeInsets.all(10),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        tx.id.toString(),
+                        style: GoogleFonts.openSans(
+                          fontSize: 13,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        tx.entrydate,
+                        style: GoogleFonts.openSans(
+                          fontSize: 13,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        tx.entrytime,
+                        style: GoogleFonts.openSans(
+                          fontSize: 13,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        tx.exitdate,
+                        style: GoogleFonts.openSans(
+                          fontSize: 13,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        tx.exittime,
+                        style: GoogleFonts.openSans(
+                          fontSize: 13,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            'Slots',
+                            style: GoogleFonts.openSans(
+                              fontSize: 13,
+                              color: Colors.white,
+                            ),
+                          ),
+                          Text(
+                            tx.slots,
+                            style: GoogleFonts.openSans(
+                              fontSize: 13,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
                 ),
               );
             }).toList(),

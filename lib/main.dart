@@ -11,9 +11,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: HomePage(),
-      //AuthScreen(),
+      debugShowCheckedModeBanner: false, //AuthScreen(),
       routes: {
         HomePage.routeName: (context) => HomePage(),
         SettingsScreen.routeName: (ctx) => SettingsScreen(),

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:glassmorphism/glassmorphism.dart';
 import './user_preferences.dart';
 import './user.dart';
 import 'account_widget.dart';
@@ -30,18 +31,31 @@ class _ProfilePageState extends State<ProfilePage> {
       backgroundColor: Colors.transparent,
       body: ListView(
         children: [
-          Container(
+          GlassmorphicContainer(
             height: 150,
+            width: double.infinity,
+            borderRadius: 20,
+            blur: 20,
+            linearGradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromARGB(255, 102, 51, 152),
+                Color.fromARGB(255, 34, 49, 121),
+              ],
+              stops: [0.1, 1],
+            ),
+            borderGradient: LinearGradient(
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+              colors: [
+                Color.fromARGB(255, 255, 255, 255).withOpacity(0.3),
+                Color.fromARGB(255, 255, 255, 255).withOpacity(0.3),
+              ],
+            ),
+            border: 1,
             margin: EdgeInsets.all(15),
             padding: EdgeInsets.all(30),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: Color.fromARGB(255, 31, 31, 31),
-              ),
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
-            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -51,8 +65,8 @@ class _ProfilePageState extends State<ProfilePage> {
                 ),
                 ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
-                  child: Image.network(
-                    'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6e/Breezeicons-actions-22-im-user.svg/768px-Breezeicons-actions-22-im-user.svg.png?20160527143724',
+                  child: Image.asset(
+                    'profile.png',
                   ),
                 ),
               ],
@@ -65,38 +79,42 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 
   @override
-  Widget buildName(User user) => Column(
-        children: <Widget>[
-          Text(
-            user.name,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 15,
+  Widget buildName(User user) => Center(
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.fromLTRB(5, 16, 5, 5),
+              child: Text(
+                user.name,
+                style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 15,
+                  color: Colors.white,
+                ),
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            user.mobile_no,
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 10,
+            const SizedBox(height: 4),
+            Text(
+              user.mobile_no,
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 10,
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            user.email,
-            style: TextStyle(
-              color: Colors.grey,
-              fontSize: 10,
+            const SizedBox(height: 4),
+            Text(
+              user.email,
+              style: TextStyle(
+                color: Colors.grey,
+                fontSize: 10,
+              ),
             ),
-          ),
-          const SizedBox(height: 8),
-          Text(
-            user.key,
-            style: TextStyle(
-              fontSize: 13,
+            const SizedBox(height: 4),
+            Text(
+              user.key,
+              style: TextStyle(fontSize: 13, color: Colors.grey),
             ),
-          ),
-        ],
+          ],
+        ),
       );
 }

@@ -87,7 +87,7 @@ class _HomePageBodyState extends State<HomePageBody> {
             GlassmorphicContainer(
               height: 80,
               width: double.infinity,
-              borderRadius: 2,
+              borderRadius: 1,
               blur: 20,
               linearGradient: LinearGradient(
                 begin: Alignment.topLeft,
@@ -102,11 +102,11 @@ class _HomePageBodyState extends State<HomePageBody> {
                 begin: Alignment.topLeft,
                 end: Alignment.bottomRight,
                 colors: [
-                  Color.fromARGB(255, 0, 0, 0),
-                  Color.fromARGB(255, 255, 255, 255),
+                  Color.fromARGB(255, 121, 83, 170),
+                  Color.fromARGB(255, 64, 103, 224),
                 ],
               ),
-              border: 2,
+              border: 0.5,
               child: Column(
                 children: [
                   Row(
