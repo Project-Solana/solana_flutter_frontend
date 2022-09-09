@@ -1,11 +1,82 @@
 import 'dart:ui';
-
+import 'package:geocoding/geocoding.dart';
 import './provider_and_slot.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:glassmorphism/glassmorphism.dart';
+import 'package:geolocator/geolocator.dart';
+import 'package:fluttertoast/fluttertoast.dart';
+import '../bottom_sheet.dart';
 
-class HomePageBody extends StatelessWidget {
+class HomePageBody extends StatefulWidget {
   const HomePageBody({Key key}) : super(key: key);
+
+  @override
+  State<HomePageBody> createState() => _HomePageBodyState();
+}
+
+class _HomePageBodyState extends State<HomePageBody> {
+  bool login;
+  _ProviderAndSlo(bool lol) {
+    login = lol;
+    setState(() {});
+  }
+
+  String address = "My Address";
+
+  Future<Position> _determinePosition() async {
+    bool serviceEnabled;
+    LocationPermission permission;
+    serviceEnabled = await Geolocator.isLocationServiceEnabled();
+    if (!serviceEnabled) {
+      Fluttertoast.showToast(msg: 'Please keep your location on.');
+    }
+    permission = await Geolocator.checkPermission();
+    if (permission == LocationPermission.denied) {
+      permission = await Geolocator.requestPermission();
+      if (permission == LocationPermission.denied) {
+        Fluttertoast.showToast(msg: 'Location Permission is denied');
+      }
+    }
+    if (permission == LocationPermission.deniedForever) {
+      Fluttertoast.showToast(msg: 'Permission Denied Forever');
+    }
+    Position position = await Geolocator.getCurrentPosition(
+        desiredAccuracy: LocationAccuracy.high);
+    var latitude = position.latitude;
+    var longitude = position.longitude;
+    // debugPrint("latitude: ${latitude}, longitude: ${longitude}");
+    try {
+      List<Placemark> placemarks =
+          await placemarkFromCoordinates(latitude, longitude);
+      Placemark place = placemarks[0];
+      setState(() {
+        address = "${place.locality},${place.postalCode},${place.country}";
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  // void CurrentPosition() async {
+  //   //Permission
+  //   LocationPermission permission = await Geolocator.checkPermission();
+  //   if (permission == LocationPermission.denied ||
+  //       permission == LocationPermission.deniedForever) {
+  //     print("Permission Not Given");
+  //     LocationPermission asked = await Geolocator.requestPermission();
+  //   } else {
+  //     Position position = await Geolocator.getCurrentPosition(
+  //         desiredAccuracy: LocationAccuracy.high);
+  //     debugPrint('location: ${position.latitude}');
+  //     final coordinates =
+  //         new Coordinates(position.latitude, position.longitude);
+  //     var add = await Geocoder.local.findAddressesFromCoordinates(coordinates);
+  //     setState(() {
+  //       address = add.first.addressLine;
+  //     });
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -13,104 +84,140 @@ class HomePageBody extends StatelessWidget {
       child: Container(
         child: Column(
           children: <Widget>[
-            // Container(
-            //   color: Color.fromARGB(163, 226, 248, 203),
-            //   height: 150,
-            //   width: double.infinity,
-            //   child: Image.asset(
-            //     'assets/car_parking.jpg',
-            //     height: 150,
-            //     width: 800,
-            //   ),
-            // ),
-
-            Stack(
-              children: [
-                Container(
-                  width: double.infinity,
-                  color: Color.fromARGB(163, 226, 248, 203),
-                  height: 200,
-
-                  child: Image.asset(
-                    'assets/car_parking.jpg',
-                    height: 150,
-                    width: 800,
-                  ),
-                  // decoration: BoxDecoration(
-                  //   image: DecorationImage(
-                  //     fit: BoxFit.cover,
-                  //     image: NetworkImage(
-                  //       "https://images.unsplash.com/photo-1537734796389-e1fc293cf856?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=632&q=80",
-                  //     ),
-                  //   ),
-                  // ),
-                ),
-                Positioned(
-                  bottom: 0,
-                  left: 0,
-                  right: 0,
-                  child: ClipRect(
-                    child: BackdropFilter(
-                      filter: ImageFilter.blur(sigmaX: 1.0, sigmaY: 1.0),
-                      child: Container(
-                        // the size where the blurring starts
-                        height: MediaQuery.of(context).size.height * 0.4,
-                        color: Colors.transparent,
-                      ),
-                    ),
-                  ),
-                ),
-                Positioned(
-                  child: Center(
-                    child: Text(
-                      'Rumaal',
-                      style: GoogleFonts.caveat(
-                        fontSize: 40,
-                        foreground: Paint()
-                          ..style = PaintingStyle.stroke
-                          ..strokeWidth = 1
-                          ..color = Color.fromARGB(255, 255, 255, 255),
-                        letterSpacing: 0,
-                        wordSpacing: 17,
-                        shadows: <Shadow>[
-                          Shadow(
-                            offset: Offset(2, 2),
-                            blurRadius: 5.0,
-                            color: Color.fromARGB(255, 6, 14, 150),
+            GlassmorphicContainer(
+              height: 80,
+              width: double.infinity,
+              borderRadius: 2,
+              blur: 20,
+              linearGradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromARGB(255, 102, 51, 152),
+                  Color.fromARGB(255, 34, 49, 121),
+                ],
+                stops: [0.1, 1],
+              ),
+              borderGradient: LinearGradient(
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+                colors: [
+                  Color.fromARGB(255, 0, 0, 0),
+                  Color.fromARGB(255, 255, 255, 255),
+                ],
+              ),
+              border: 2,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        child: IconButton(
+                          icon: Icon(
+                            Icons.location_pin,
+                            color: Colors.white,
                           ),
-                        ],
+                          onPressed: () {
+                            _determinePosition();
+                          },
+                        ),
                       ),
-                    ),
+                      TextButton(
+                        style: TextButton.styleFrom(
+                          textStyle: const TextStyle(fontSize: 20),
+                        ),
+                        onPressed: () {},
+                        child: Row(
+                          children: [
+                            RichText(
+                              text: TextSpan(children: <TextSpan>[
+                                TextSpan(
+                                  text: 'Home',
+                                  style: TextStyle(
+                                      fontSize: 20,
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold),
+                                ),
+                                TextSpan(
+                                  text: '\n',
+                                ),
+                                TextSpan(
+                                  text: address,
+                                  style: TextStyle(
+                                      fontSize: 8, color: Colors.white),
+                                )
+                              ]),
+                            ),
+                            Icon(
+                              Icons.arrow_drop_down,
+                              color: Colors.white,
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        height: 60,
+                        width: 300,
+                        margin: EdgeInsets.fromLTRB(5, 10, 10, 10),
+                        decoration: BoxDecoration(
+                          color: Color.fromARGB(47, 52, 52, 52),
+                          border: Border.all(
+                            color: Colors.white,
+                          ),
+                          borderRadius: BorderRadius.circular(16.0),
+                        ),
+                        child: Column(
+                          children: <Widget>[
+                            Padding(
+                              padding: EdgeInsets.all(5),
+                              child: TextField(
+                                enabled: login,
+                                style: TextStyle(
+                                    decorationColor:
+                                        Color.fromARGB(255, 73, 80, 87)),
+                                cursorColor: Color.fromARGB(255, 73, 80, 87),
+                                decoration: InputDecoration(
+                                  border: InputBorder.none,
+                                  hintText: 'Enter your current location',
+                                  labelStyle: GoogleFonts.quicksand(
+                                    color: Color.fromARGB(255, 255, 255, 255),
+                                    fontSize: 14,
+                                  ),
+                                  suffixIcon: IconButton(
+                                    onPressed: () => openBottomSheet(context),
+                                    icon: Icon(
+                                      Icons.search,
+                                      color: Colors.white,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
-
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.center,
-            //   children: [
-            //     Image.asset(
-            //       'assets/car_parking.jpg',
-            //       height: 150,
-            //       width: 200,
-            //     ),
-            //     Container(
-            //       width: 100,
-            //       margin: EdgeInsets.only(left: 20),
-            //       child: Text(
-            //         'Park your vehicle with ParkIT',
-            //         style: GoogleFonts.caveat(
-            //           color: Color.fromARGB(255, 0, 0, 0),
-            //           fontSize: 20,
-            //         ),
-            //       ),
-            //     ),
-            //   ],
-            // ),
             ProviderAndSlot(),
           ],
         ),
       ),
     );
   }
+}
+
+void openBottomSheet(BuildContext ctx) {
+  showModalBottomSheet(
+    isScrollControlled: true,
+    shape: const RoundedRectangleBorder(
+      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+    ),
+    context: ctx,
+    builder: (ctx) {
+      return const MyBottomSheet();
+    },
+  );
 }

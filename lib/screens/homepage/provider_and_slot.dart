@@ -171,7 +171,9 @@ class _ProviderAndSlotState extends State<ProviderAndSlot> {
                     ),
                     child: Column(
                       children: [
-                        Text('\nName of Selected Provider'),
+                        Text(
+                          '\nName of Selected Provider',
+                        ),
                         const SizedBox(
                           height: 10,
                         ),
