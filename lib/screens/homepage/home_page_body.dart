@@ -59,7 +59,6 @@ class _HomePageBodyState extends State<HomePageBody> {
   }
 
   // void CurrentPosition() async {
-  //   //Permission
   //   LocationPermission permission = await Geolocator.checkPermission();
   //   if (permission == LocationPermission.denied ||
   //       permission == LocationPermission.deniedForever) {
