@@ -24,6 +24,5 @@ class Auth with ChangeNotifier {
         },
       ),
     );
-    //print(json.decode(response.body));
   }
 }
