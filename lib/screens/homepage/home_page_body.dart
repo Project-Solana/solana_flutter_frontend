@@ -57,26 +57,6 @@ class _HomePageBodyState extends State<HomePageBody> {
       print(e);
     }
   }
-
-  // void CurrentPosition() async {
-  //   LocationPermission permission = await Geolocator.checkPermission();
-  //   if (permission == LocationPermission.denied ||
-  //       permission == LocationPermission.deniedForever) {
-  //     print("Permission Not Given");
-  //     LocationPermission asked = await Geolocator.requestPermission();
-  //   } else {
-  //     Position position = await Geolocator.getCurrentPosition(
-  //         desiredAccuracy: LocationAccuracy.high);
-  //     debugPrint('location: ${position.latitude}');
-  //     final coordinates =
-  //         new Coordinates(position.latitude, position.longitude);
-  //     var add = await Geocoder.local.findAddressesFromCoordinates(coordinates);
-  //     setState(() {
-  //       address = add.first.addressLine;
-  //     });
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
