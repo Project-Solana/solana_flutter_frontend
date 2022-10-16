@@ -33,12 +33,6 @@ class _HomePageState extends State<HomePage> {
         width: double.infinity,
         height: double.infinity,
         decoration: BoxDecoration(color: Color.fromARGB(255, 186, 191, 255)),
-        // decoration: BoxDecoration(
-        //   image: DecorationImage(
-        //     fit: BoxFit.fill,
-        //     image: AssetImage("assets/background 1.jpg"),
-        //   ),
-        // ),
         child: Scaffold(
           backgroundColor: Colors.transparent,
           // appBar: PreferredSize(
