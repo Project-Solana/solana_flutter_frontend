@@ -45,8 +45,7 @@ class _HomePageBodyState extends State<HomePageBody> {
         desiredAccuracy: LocationAccuracy.high);
     var latitude = position.latitude;
     var longitude = position.longitude;
-    // debugPrint("latitude: ${latitude}, longitude: ${longitude}");
-    try {
+        try {
       List<Placemark> placemarks =
           await placemarkFromCoordinates(latitude, longitude);
       Placemark place = placemarks[0];
