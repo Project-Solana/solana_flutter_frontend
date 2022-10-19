@@ -88,7 +88,7 @@ class _ProfilePageState extends State<ProfilePage> {
                 user.name,
                 style: TextStyle(
                   fontWeight: FontWeight.bold,
-                  fontSize: 15,
+                  fontSize: 18,
                   color: Colors.white,
                 ),
               ),
@@ -98,7 +98,7 @@ class _ProfilePageState extends State<ProfilePage> {
               user.mobile_no,
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: 10,
+                fontSize: 13,
               ),
             ),
             const SizedBox(height: 4),
@@ -106,7 +106,7 @@ class _ProfilePageState extends State<ProfilePage> {
               user.email,
               style: TextStyle(
                 color: Colors.grey,
-                fontSize: 10,
+                fontSize: 13,
               ),
             ),
             const SizedBox(height: 4),
